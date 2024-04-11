@@ -1,0 +1,42 @@
+﻿  ArrayAndHashingTester.cpp
+  ArrayAndHashingTester.h
+  ArrayAndHashing.cpp
+  Backtracking.cpp
+  BacktrackingTester.cpp
+  BinarySearch.cpp
+  BinarySearchTester.cpp
+  BitManipulation.cpp
+  BitManipulationTester.cpp
+  DynamicProgramming.cpp
+  DynamicProgrammingTester.cpp
+  Graph.cpp
+  GraphTester.cpp
+  Greedy.cpp
+  GreedyTester.cpp
+  HeapAndPriorityQueue.cpp
+  HeapAndPriorityQueueTester.cpp
+  Intervals.cpp
+  IntervalsTester.cpp
+  LinkedList.cpp
+  Generating Code...
+  Compiling...
+  LinkedListTester.cpp
+  main.cpp
+  MathAndGeometry.cpp
+  MathAndGeometryTester.cpp
+  SlidingWindow.cpp
+  SlidingWindowTester.cpp
+  Stack.cpp
+  StackTester.cpp
+  Tester.cpp
+  TestRunner.cpp
+  Tree.cpp
+  TreePrinter.cpp
+  TreeTester.cpp
+  Trie.cpp
+  TrieTester.cpp
+  TwoPointers.cpp
+  TwoPointersTester.cpp
+  Generating Code...
+x64\Debug\ArrayAndHashingTester.obj : warning LNK4042: object specified more than once; extras ignored
+  LeetcodeCompilation.vcxproj -> C:\Users\gelli\source\repos\LeetcodeCompilation\x64\Debug\LeetcodeCompilation.exe

@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Testers">
+      <UniqueIdentifier>{c224e867-d8c8-4115-b72a-ada3ad87827f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Solutions">
+      <UniqueIdentifier>{6f9453eb-3bd2-460e-a307-de978aaf85e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Testers">
+      <UniqueIdentifier>{645b529f-05a7-4b86-b15f-22fca857add7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Solutions">
+      <UniqueIdentifier>{a02747a0-b763-49a6-8784-f88c60c2a315}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Design Patterns">
+      <UniqueIdentifier>{27691fa9-e49a-4a96-b294-0408e9380add}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Design Patterns\BuilderFactories">
+      <UniqueIdentifier>{e9af178b-30ba-4d99-a211-c51831d2cee4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GraphNode.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListNode.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeNode.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TrieNode.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArrayAndHashing.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="Backtracking.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="BacktrackingTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="BinarySearch.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="BinarySearchTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="BitManipulation.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="BitManipulationTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicProgramming.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicProgrammingTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="Greedy.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="GreedyTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="HeapAndPriorityQueue.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="HeapAndPriorityQueueTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="Intervals.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="IntervalsTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedListTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="MathAndGeometry.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="MathAndGeometryTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="SlidingWindow.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="SlidingWindowTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="StackTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="Tester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="Tree.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="Trie.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="TwoPointers.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="TwoPointersTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="TrieTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="Solution.h">
+      <Filter>Header Files\Solutions</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="ArrayAndHashingFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="BinarySearchFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="BitManipulationFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicProgrammingFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="GreedyFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="HeapAndPriorityQueueFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="IntervalsFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedListFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="MathAndGeometryFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="SlidingWindowFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="StackFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="TrieFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="TwoPointersFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="TestRunner.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+    <ClInclude Include="BacktrackingFactory.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractBuilder.h">
+      <Filter>Header Files\Design Patterns\BuilderFactories</Filter>
+    </ClInclude>
+    <ClInclude Include="TreePrinter.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ArrayAndHashingTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="BacktrackingTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="BinarySearchTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="BitManipulationTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicProgrammingTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="GreedyTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="HeapAndPriorityQueueTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="IntervalsTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedListTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="SlidingWindowTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="StackTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="TreeTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="TrieTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="TwoPointersTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrayAndHashing.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="Backtracking.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="BinarySearch.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="BitManipulation.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicProgramming.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="Greedy.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="HeapAndPriorityQueue.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="Intervals.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="MathAndGeometry.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="SlidingWindow.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="Stack.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="Tester.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="Tree.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="Trie.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="TwoPointers.cpp">
+      <Filter>Source Files\Solutions</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrayAndHashingTester.h">
+      <Filter>Header Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="MathAndGeometryTester.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="TestRunner.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+    <ClCompile Include="TreePrinter.cpp">
+      <Filter>Source Files\Testers</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
