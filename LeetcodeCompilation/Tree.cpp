@@ -1,6 +1,7 @@
 #include "Tree.h"
 
 #include <algorithm>
+#include <climits>
 #include <queue>
 #include <sstream>
 

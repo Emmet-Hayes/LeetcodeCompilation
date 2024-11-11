@@ -1,5 +1,8 @@
 #include "MathAndGeometry.h"
 
+#include <algorithm>
+
+
 void MathAndGeometry::rotateMatrix(std::vector<std::vector<int>>& matrix)
 {
     for (int i = 0; i < matrix.size(); ++i)

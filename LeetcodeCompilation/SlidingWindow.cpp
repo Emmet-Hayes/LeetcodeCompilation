@@ -1,5 +1,6 @@
 #include "SlidingWindow.h"
 
+#include <climits>
 #include <unordered_map>
 #include <deque>
 

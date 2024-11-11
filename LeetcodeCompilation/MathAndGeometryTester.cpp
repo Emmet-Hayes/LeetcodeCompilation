@@ -1,5 +1,7 @@
 #include "MathAndGeometryTester.h"
 
+#include <cmath>
+
 
 bool MathAndGeometryTester::testAllProblems()
 {

@@ -1,5 +1,7 @@
 #include "HeapAndPriorityQueueTester.h"
 
+#include <cmath>
+
 
 bool HeapAndPriorityQueueTester::testAllProblems()
 {
@@ -142,9 +144,9 @@ bool HeapAndPriorityQueueTester::testMedianFinder()
     mf.addNum(1);
     mf.addNum(2);
     double med = mf.findMedian();
-    if (fabs(med - 1.5) > 1e-9) return false;
+    if (std::fabs(med - 1.5) > 1e-9) return false;
     mf.addNum(3);
     med = mf.findMedian();
-    if (fabs(med - 2.0) > 1e-9) return false;
+    if (std::fabs(med - 2.0) > 1e-9) return false;
     return true;
 }

@@ -1,5 +1,7 @@
 #include "BinarySearch.h"
 
+#include <climits>
+
 
 /** Binary Search (Microsoft - Easy)
 * Given an array of integers nums which is sorted in ascending order, 

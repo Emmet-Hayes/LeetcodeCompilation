@@ -1,5 +1,7 @@
 #include "DynamicProgramming.h"
 
+#include <algorithm>
+#include <climits>
 #include <unordered_set>
 
 

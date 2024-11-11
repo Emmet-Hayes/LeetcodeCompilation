@@ -1,5 +1,7 @@
 #include "Graph.h"
 
+#include <algorithm>
+#include <climits>
 #include <stack>
 #include <queue>
 

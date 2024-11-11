@@ -1,5 +1,7 @@
 #include "BinarySearchTester.h"
 
+#include <cmath>
+
 
 bool BinarySearchTester::testAllProblems()
 {

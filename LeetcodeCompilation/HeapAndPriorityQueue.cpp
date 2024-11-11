@@ -1,5 +1,8 @@
 #include "HeapAndPriorityQueue.h"
 
+#include <algorithm>
+#include <climits>
+#include <cmath>
 #include <tuple>
 
 
@@ -49,8 +52,8 @@ std::vector<std::pair<int, int>> HeapAndPriorityQueue::kClosestPointsToOrigin(co
 {
     auto cmp = [](std::pair<int, int> point1, std::pair<int, int> point2)
         {
-            return sqrt(point1.first * point1.first + point1.second * point1.second)
-                 > sqrt(point2.first * point2.first + point2.second * point2.second);
+            return std::sqrt(point1.first * point1.first + point1.second * point1.second)
+                 > std::sqrt(point2.first * point2.first + point2.second * point2.second);
         };
 
     std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, decltype(cmp)> pq(cmp);
