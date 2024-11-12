@@ -1,8 +1,7 @@
 #pragma once
 
 #include "AbstractFactory.h"
-
-#include <string>
+#include "AbstractBuilder.h"
 
 
 class TestRunner
@@ -14,8 +13,8 @@ public:
 private:
     TestRunner() {};
     void printTestResults(bool result, const std::string& name);
-    std::unique_ptr<AbstractFactory> buildFactory(const std::string& factoryName);
-    std::unique_ptr<Tester> buildConfiguredTester(const std::string& factoryName, bool verbose = false);
+    std::unique_ptr<AbstractBuilder> makeFactoryBuilder(const std::string& factoryName);
+    std::unique_ptr<Tester> buildConfiguredTester(const std::string& factoryName, bool verbose = false, bool isSolutionOnly = false, bool isParallel = false, std::string customName = "Not Set");
 
     static std::unique_ptr<TestRunner> instance;
 };

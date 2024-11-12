@@ -414,21 +414,22 @@ bool LinkedListTester::testMergeKSortedLists(std::vector<ListNode*> lists, ListN
         ss << "]\n";
     }
 
+    bool result = true;
     while (actual && expected)
     {
         if (actual->val != expected->val)
-            return false;
+            result = false;
         actual = actual->next;
         expected = expected->next;
     }
 
     if (actual || expected)
-        return false;
+        result = false;
 
     LinkedList::destroyLinkedList(actual);
     LinkedList::destroyLinkedList(expected);
 
-    return true;
+    return result;
 }
 
 bool LinkedListTester::testReverseKGroup(ListNode* head, int k, ListNode* expected)

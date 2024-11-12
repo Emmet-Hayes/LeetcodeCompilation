@@ -8,7 +8,7 @@ class BacktrackingFactory : public AbstractFactory
 {
 public:
     std::unique_ptr<Solution> createSolution() { return std::make_unique<Backtracking>(); }
-    std::unique_ptr<Tester>   createTester() { return std::make_unique<BacktrackingTester>(); }
+    std::unique_ptr<Tester>   createTester()   { return std::make_unique<BacktrackingTester>(); }
 
     class Builder : public AbstractBuilder
     {

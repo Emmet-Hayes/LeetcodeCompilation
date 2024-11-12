@@ -8,7 +8,7 @@ class BitManipulationFactory : public AbstractFactory
 {
 public:
     std::unique_ptr<Solution> createSolution() { return std::make_unique<BitManipulation>(); }
-    std::unique_ptr<Tester>   createTester() { return std::make_unique<BitManipulationTester>(); }
+    std::unique_ptr<Tester>   createTester()   { return std::make_unique<BitManipulationTester>(); }
 
     class Builder : public AbstractBuilder
     {

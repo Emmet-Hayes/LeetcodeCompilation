@@ -8,7 +8,7 @@ class SlidingWindowFactory : public AbstractFactory
 {
 public:
     std::unique_ptr<Solution> createSolution() { return std::make_unique<SlidingWindow>(); }
-    std::unique_ptr<Tester>   createTester() { return std::make_unique<SlidingWindowTester>(); }
+    std::unique_ptr<Tester>   createTester()   { return std::make_unique<SlidingWindowTester>(); }
 
     class Builder : public AbstractBuilder
     {

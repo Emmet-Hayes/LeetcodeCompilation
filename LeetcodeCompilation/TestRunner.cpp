@@ -30,9 +30,6 @@ TestRunner& TestRunner::getInstance()
 
 void TestRunner::runAllTests()
 {
-    // seems like a good place for a factory pattern
-    std::vector<std::unique_ptr<AbstractFactory>> factories;
-
     std::vector<std::string> testerTypes =
     {
         "ArrayAndHashing", "Backtracking", "BinarySearch",
@@ -41,14 +38,6 @@ void TestRunner::runAllTests()
         "LinkedList", "MathAndGeometry", "SlidingWindow",
         "Stack", "Tree", "Trie", "TwoPointers"
     };
-
-    /*
-    for (std::string testerType : testerTypes)
-        factories.push_back(std::move(buildFactory(testerType)));
-    
-    std::vector<std::unique_ptr<Tester>> testers;
-    for (auto& factory : factories)
-        testers.push_back(std::move(factory->createTester())); */
 
     std::vector<std::unique_ptr<Tester>> testers;
     for (std::string testerType : testerTypes)
@@ -63,13 +52,15 @@ void TestRunner::runAllTests()
         numTests += static_cast<int>(tester->getNumTests());
     }
 
+    std::cout << "\nALL TESTS PASSED!!! \n";
     std::cout << "\nTests Run: " << numTests << "\n";
+    std::cout << "\nExiting Test Runner...\n";
 }
 
 
 void TestRunner::printTestResults(bool result, const std::string& name)
 {
-    if (result == 1)
+    if (result)
     {
         std::cout << "\n##########################################\n"
                   << "All " << name << " tests passed.\n"
@@ -83,129 +74,50 @@ void TestRunner::printTestResults(bool result, const std::string& name)
     }
 }
 
-std::unique_ptr<AbstractFactory> TestRunner::buildFactory(const std::string& factoryName)
+std::unique_ptr<AbstractBuilder> TestRunner::makeFactoryBuilder(const std::string& factoryName)
 {
     if      (factoryName.compare("ArraysAndHashing") == 0)
-        return   std::make_unique<ArrayAndHashingFactory>();
+        return   std::make_unique<ArrayAndHashingFactory::Builder>();
     else if (factoryName.compare("Backtracking") == 0)
-        return   std::make_unique<BacktrackingFactory>();
+        return   std::make_unique<BacktrackingFactory::Builder>();
     else if (factoryName.compare("BinarySearch") == 0)
-        return   std::make_unique<BinarySearchFactory>();
+        return   std::make_unique<BinarySearchFactory::Builder>();
     else if (factoryName.compare("BitManipulation") == 0)
-        return   std::make_unique<BitManipulationFactory>();
+        return   std::make_unique<BitManipulationFactory::Builder>();
     else if (factoryName.compare("DynamicProgramming") == 0)
-        return   std::make_unique<DynamicProgrammingFactory>();
+        return   std::make_unique<DynamicProgrammingFactory::Builder>();
     else if (factoryName.compare("Graph") == 0)
-        return   std::make_unique<GraphFactory>();
+        return   std::make_unique<GraphFactory::Builder>();
     else if (factoryName.compare("Greedy") == 0)
-        return   std::make_unique<GreedyFactory>();
+        return   std::make_unique<GreedyFactory::Builder>();
     else if (factoryName.compare("HeapAndPriorityQueue") == 0)
-        return   std::make_unique<HeapAndPriorityQueueFactory>();
+        return   std::make_unique<HeapAndPriorityQueueFactory::Builder>();
     else if (factoryName.compare("Intervals") == 0)
-        return   std::make_unique<IntervalsFactory>();
+        return   std::make_unique<IntervalsFactory::Builder>();
     else if (factoryName.compare("LinkedList") == 0)
-        return   std::make_unique<LinkedListFactory>();
+        return   std::make_unique<LinkedListFactory::Builder>();
     else if (factoryName.compare("MathAndGeometry") == 0)
-        return   std::make_unique<MathAndGeometryFactory>();
+        return   std::make_unique<MathAndGeometryFactory::Builder>();
     else if (factoryName.compare("SlidingWindow") == 0)
-        return   std::make_unique<SlidingWindowFactory>();
+        return   std::make_unique<SlidingWindowFactory::Builder>();
     else if (factoryName.compare("Stack") == 0)
-        return   std::make_unique<StackFactory>();
+        return   std::make_unique<StackFactory::Builder>();
     else if (factoryName.compare("Tree") == 0)
-        return   std::make_unique<TreeFactory>();
+        return   std::make_unique<TreeFactory::Builder>();
     else if (factoryName.compare("Trie") == 0)
-        return   std::make_unique<TrieFactory>();
+        return   std::make_unique<TrieFactory::Builder>();
     else if (factoryName.compare("TwoPointers") == 0)
-        return   std::make_unique<TwoPointersFactory>();
-    else return  std::make_unique<ArrayAndHashingFactory>(); // default
+        return   std::make_unique<TwoPointersFactory::Builder>();
+    else return  std::make_unique<ArrayAndHashingFactory::Builder>(); // default
 }
 
-std::unique_ptr<Tester> TestRunner::buildConfiguredTester(const std::string& factoryName, bool verbose)
+std::unique_ptr<Tester> TestRunner::buildConfiguredTester(const std::string& factoryName, bool verbose, bool isSolutionOnly, bool isParallel, std::string customName)
 {
-    if (factoryName.compare("ArraysAndHashing") == 0)
-    {
-        ArrayAndHashingFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("Backtracking") == 0)
-    {
-        BacktrackingFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("BinarySearch") == 0)
-    {
-        BinarySearchFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("BitManipulation") == 0)
-    {
-        BitManipulationFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("DynamicProgramming") == 0)
-    {
-        DynamicProgrammingFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("Graph") == 0)
-    {
-        GraphFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("Greedy") == 0)
-    {
-        GreedyFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("HeapAndPriorityQueue") == 0)
-    {
-        HeapAndPriorityQueueFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("Intervals") == 0)
-    {
-        IntervalsFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("LinkedList") == 0)
-    {
-        LinkedListFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("MathAndGeometry") == 0)
-    {
-        MathAndGeometryFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("SlidingWindow") == 0)
-    {
-        SlidingWindowFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("Stack") == 0)
-    {
-        StackFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("Tree") == 0)
-    {
-        TreeFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("Trie") == 0)
-    {
-        TrieFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else if (factoryName.compare("TwoPointers") == 0)
-    {
-        TwoPointersFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
-    else
-    {
-        ArrayAndHashingFactory::Builder builder;
-        return builder.setVerbose(verbose).buildTester();
-    }
+    return makeFactoryBuilder(factoryName)
+            ->setVerbose(verbose)
+            ->setIsSolutionOnly(isSolutionOnly)
+            ->setIsParallel(isParallel)
+            ->setCustomName(customName)
+            ->buildTester();
 }
 

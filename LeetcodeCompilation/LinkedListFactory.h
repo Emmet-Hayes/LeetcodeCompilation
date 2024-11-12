@@ -8,7 +8,7 @@ class LinkedListFactory : public AbstractFactory
 {
 public:
     std::unique_ptr<Solution> createSolution() { return std::make_unique<LinkedList>(); }
-    std::unique_ptr<Tester>   createTester() { return std::make_unique<LinkedListTester>(); }
+    std::unique_ptr<Tester>   createTester()   { return std::make_unique<LinkedListTester>(); }
 
     class Builder : public AbstractBuilder
     {

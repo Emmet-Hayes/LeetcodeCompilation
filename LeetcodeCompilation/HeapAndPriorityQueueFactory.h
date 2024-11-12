@@ -8,7 +8,7 @@ class HeapAndPriorityQueueFactory : public AbstractFactory
 {
 public:
     std::unique_ptr<Solution> createSolution() { return std::make_unique<HeapAndPriorityQueue>(); }
-    std::unique_ptr<Tester>   createTester() { return std::make_unique<HeapAndPriorityQueueTester>(); }
+    std::unique_ptr<Tester>   createTester()   { return std::make_unique<HeapAndPriorityQueueTester>(); }
 
     class Builder : public AbstractBuilder
     {

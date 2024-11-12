@@ -8,7 +8,7 @@ class DynamicProgrammingFactory : public AbstractFactory
 {
 public:
     std::unique_ptr<Solution> createSolution() { return std::make_unique<DynamicProgramming>(); }
-    std::unique_ptr<Tester>   createTester() { return std::make_unique<DynamicProgrammingTester>(); }
+    std::unique_ptr<Tester>   createTester()   { return std::make_unique<DynamicProgrammingTester>(); }
 
     class Builder : public AbstractBuilder
     {

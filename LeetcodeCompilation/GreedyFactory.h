@@ -8,7 +8,7 @@ class GreedyFactory : public AbstractFactory
 {
 public:
     std::unique_ptr<Solution> createSolution() { return std::make_unique<Greedy>(); }
-    std::unique_ptr<Tester>   createTester() { return std::make_unique<GreedyTester>(); }
+    std::unique_ptr<Tester>   createTester()   { return std::make_unique<GreedyTester>(); }
 
     class Builder : public AbstractBuilder
     {

@@ -8,7 +8,7 @@ class MathAndGeometryFactory : public AbstractFactory
 {
 public:
     std::unique_ptr<Solution> createSolution() { return std::make_unique<MathAndGeometry>(); }
-    std::unique_ptr<Tester>   createTester() { return std::make_unique<MathAndGeometryTester>(); }
+    std::unique_ptr<Tester>   createTester()   { return std::make_unique<MathAndGeometryTester>(); }
 
     class Builder : public AbstractBuilder
     {

@@ -8,7 +8,7 @@ class TreeFactory : public AbstractFactory
 {
 public:
     std::unique_ptr<Solution> createSolution() { return std::make_unique<Tree>(); }
-    std::unique_ptr<Tester>   createTester() { return std::make_unique<TreeTester>(); }
+    std::unique_ptr<Tester>   createTester()   { return std::make_unique<TreeTester>(); }
 
     class Builder : public AbstractBuilder
     {

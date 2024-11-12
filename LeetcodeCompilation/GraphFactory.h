@@ -8,7 +8,7 @@ class GraphFactory : public AbstractFactory
 {
 public:
     std::unique_ptr<Solution> createSolution() { return std::make_unique<Graph>(); }
-    std::unique_ptr<Tester>   createTester() { return std::make_unique<GraphTester>(); }
+    std::unique_ptr<Tester>   createTester()   { return std::make_unique<GraphTester>(); }
 
     class Builder : public AbstractBuilder
     {

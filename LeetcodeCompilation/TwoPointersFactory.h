@@ -8,7 +8,7 @@ class TwoPointersFactory : public AbstractFactory
 {
 public:
     std::unique_ptr<Solution> createSolution() { return std::make_unique<TwoPointers>(); }
-    std::unique_ptr<Tester>   createTester() { return std::make_unique<TwoPointersTester>(); }
+    std::unique_ptr<Tester>   createTester()   { return std::make_unique<TwoPointersTester>(); }
 
     class Builder : public AbstractBuilder
     {

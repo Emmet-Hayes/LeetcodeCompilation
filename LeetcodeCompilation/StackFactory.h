@@ -8,7 +8,7 @@ class StackFactory : public AbstractFactory
 {
 public:
     std::unique_ptr<Solution> createSolution() { return std::make_unique<Stack>(); }
-    std::unique_ptr<Tester>   createTester() { return std::make_unique<StackTester>(); }
+    std::unique_ptr<Tester>   createTester()   { return std::make_unique<StackTester>(); }
 
     class Builder : public AbstractBuilder
     {
