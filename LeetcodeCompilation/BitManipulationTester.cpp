@@ -63,7 +63,7 @@ bool BitManipulationTester::testCountBits(int n, std::vector<int> expected)
 
     if (actual.size() != expected.size())
         return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i] != expected[i])
             return false;
     return true;

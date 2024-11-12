@@ -92,7 +92,7 @@ bool SlidingWindowTester::testSlidingWindowMaximum(std::vector<int> nums, int k,
         ss << "]\n";
     }
     if (actual.size() != expected.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i] != expected[i])
             return false;
     return true;

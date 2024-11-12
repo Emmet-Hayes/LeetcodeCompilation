@@ -37,7 +37,7 @@ bool IntervalsTester::testInsert(std::vector<std::pair<int, int>> intervals, std
     }
     if (actual.size() != expected.size())
         return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i].first != expected[i].first || actual[i].second != expected[i].second)
             return false;
     return true;
@@ -61,7 +61,7 @@ bool IntervalsTester::testMerge(std::vector<std::pair<int, int>> intervals, std:
     }
     if (actual.size() != expected.size())
         return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i].first != expected[i].first || actual[i].second != expected[i].second)
             return false;
     return true;
@@ -99,7 +99,7 @@ bool IntervalsTester::testMinIntervalToIncludeQuery(std::vector<std::pair<int, i
     }
     if (actual.size() != expected.size())
         return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i] != expected[i])
             return false;
     return true;

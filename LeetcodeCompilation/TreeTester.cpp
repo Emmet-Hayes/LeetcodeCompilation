@@ -154,13 +154,13 @@ bool TreeTester::testInvertBinaryTree(TreeNode* root, TreeNode* expected)
            << "\nExpected:\n" << TreePrinter::drawTree(root);
     if (preactual.size() != preexpected.size())
         return false;
-    for (int i = 0; i < preexpected.size(); ++i)
+    for (unsigned i = 0; i < preexpected.size(); ++i)
         if (preactual[i] != preexpected[i])
             return false;
 
     if (inactual.size() != inexpected.size())
         return false;
-    for (int i = 0; i < inexpected.size(); ++i)
+    for (unsigned i = 0; i < inexpected.size(); ++i)
         if (inactual[i] != inexpected[i])
             return false;
 
@@ -242,7 +242,7 @@ bool TreeTester::testLevelOrderTraversal(TreeNode* root, std::vector<std::vector
     if (getVerbose())
     {
         ss << "\nResult:\n";
-        for (int i = 0; i < actual.size(); ++i)
+        for (unsigned i = 0; i < actual.size(); ++i)
         {
             ss << "[ ";
             for (int val : actual[i])
@@ -252,7 +252,7 @@ bool TreeTester::testLevelOrderTraversal(TreeNode* root, std::vector<std::vector
                 ss << "\n";
         }
         ss << "\nExpected:\n";
-        for (int i = 0; i < expected.size(); ++i)
+        for (unsigned i = 0; i < expected.size(); ++i)
         {
             ss << "[ ";
             for (int val : expected[i])
@@ -264,10 +264,10 @@ bool TreeTester::testLevelOrderTraversal(TreeNode* root, std::vector<std::vector
         ss << "\n";
     }
     if (actual.size() != expected.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
     {
         if (actual[i].size() != expected[i].size()) return false;
-        for (int j = 0; j < expected[i].size(); ++j)
+        for (unsigned j = 0; j < expected[i].size(); ++j)
             if (actual[i][j] != expected[i][j])
                 return false;
     }
@@ -292,7 +292,7 @@ bool TreeTester::testRightSideView(TreeNode* root, std::vector<int> expected)
         ss << "]\n";
     }
     if (actual.size() != expected.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i] != expected[i])
             return false;
     return true;

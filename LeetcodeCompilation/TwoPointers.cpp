@@ -21,11 +21,11 @@ bool TwoPointers::isPalindrome(std::string& s)
     s.erase(std::remove_if(s.begin(), s.end(), [](auto const& c) -> bool { return !std::isalnum(c); }), s.end());
 
     // remove uppercase
-    for (int i = 0; i < s.size(); ++i)
+    for (unsigned i = 0; i < s.size(); ++i)
         s[i] = tolower(s[i]);
 
     // check for palindrome
-    for (int i = 0; i < s.size() / 2; ++i)
+    for (unsigned i = 0; i < s.size() / 2; ++i)
         if (s[i] != s[s.size() - 1 - i])
             return false;
 

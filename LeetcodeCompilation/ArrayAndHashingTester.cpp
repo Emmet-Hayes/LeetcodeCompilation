@@ -137,7 +137,7 @@ bool ArrayAndHashingTester::testGroupAnagrams(std::vector<std::string> strs, std
         for (std::string str : strs)
             ss << str << " ";
         ss << "]\nResult:   [ [ ";
-        for (int i = 0; i < actual.size(); ++i)
+        for (unsigned i = 0; i < actual.size(); ++i)
         {
             for (std::string str : actual[i])
                 ss << str << " ";
@@ -147,7 +147,7 @@ bool ArrayAndHashingTester::testGroupAnagrams(std::vector<std::string> strs, std
                 ss << "] ";
         }
         ss << "]\nExpected: [ [ ";
-        for (int i = 0; i < expected.size(); ++i)
+        for (unsigned i = 0; i < expected.size(); ++i)
         {
             for (std::string str : expected[i])
                 ss << str << " ";
@@ -159,10 +159,10 @@ bool ArrayAndHashingTester::testGroupAnagrams(std::vector<std::string> strs, std
         ss << "]\n";
     }
     if (expected.size() != actual.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
     {
         if (expected[i].size() != actual[i].size()) return false;
-        for (int j = 0; j < expected[i].size(); ++j)
+        for (unsigned j = 0; j < expected[i].size(); ++j)
             if (expected[i][j].compare(actual[i][j]) != 0)
                 return false;
     }
@@ -185,7 +185,7 @@ bool ArrayAndHashingTester::testTopKFrequentElements(std::vector<int> nums, int 
             ss << val << " ";
         ss << "]\n";
     }
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i] != expected[i])
             return false;
     return true;
@@ -207,7 +207,7 @@ bool ArrayAndHashingTester::testTopKFrequentElementsAlt(std::vector<int> nums, i
             ss << val << " ";
         ss << "]\n";
     }
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i] != expected[i])
             return false;
     return true;
@@ -229,7 +229,7 @@ bool ArrayAndHashingTester::testProductExceptSelf(std::vector<int> nums, std::ve
             ss << val << " ";
         ss << "]\n";
     }
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i] != expected[i])
             return false;
     return true;
@@ -249,12 +249,12 @@ bool ArrayAndHashingTester::testIsValidSudoku(std::vector<std::vector<char>> boa
             {
                 ss << val << " ";
                 j++;
-                if (j % 3 == 0 && j + 1 < board[0].size())
+                if (j % 3 == 0 && j + 1 < static_cast<int>(board[0].size()))
                     ss << "| ";
             }
             ss << "\n ";
             i++;
-            if (i % 3 == 0 && i + 1 < board.size())
+            if (i % 3 == 0 && i + 1 < static_cast<int>(board.size()))
                 ss << "---------------------\n ";
         }
         ss << "\nResult: " << actual << " | Expected: " << expected << "\n";

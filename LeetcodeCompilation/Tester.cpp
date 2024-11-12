@@ -2,7 +2,7 @@
 
 bool Tester::runAllTests()
 {
-    for (int i = 0; i < testResults.size(); ++i)
+    for (unsigned i = 0; i < testResults.size(); ++i)
         if (testResults[i] != true)
             return false;
     return true;

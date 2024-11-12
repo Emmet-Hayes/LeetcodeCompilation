@@ -84,10 +84,10 @@ bool StackTester::testGenerateParentheses(int n, std::vector<std::string> expect
         ss << "]\n";
     }
     if (actual.size() != expected.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
     {
         if (actual[i].size() != expected[i].size()) return false;
-        for (int j = 0; j < expected[i].size(); ++j)
+        for (unsigned j = 0; j < expected[i].size(); ++j)
             if (actual[i][j] != expected[i][j])
                 return false;
     }
@@ -111,7 +111,7 @@ bool StackTester::testDailyTemperatures(std::vector<int> temperatures, std::vect
         ss << "]\n";
     }
     if (actual.size() != expected.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i] != expected[i])
             return false;
     return true;

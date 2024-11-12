@@ -54,7 +54,7 @@ bool BinarySearchTester::testSearchMatrix(std::vector<std::vector<int>> matrix, 
     if (getVerbose())
     {
         ss << "\nBinary Search Test Run On Input Matrix:\n[ ";
-        for (int i = 0; i < matrix.size(); ++i)
+        for (unsigned i = 0; i < matrix.size(); ++i)
         {
             ss << "[ ";
             for (int val : matrix[i])

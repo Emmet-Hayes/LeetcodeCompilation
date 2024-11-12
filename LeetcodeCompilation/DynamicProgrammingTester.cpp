@@ -309,7 +309,7 @@ bool DynamicProgrammingTester::testLongestIncreasingPath(std::vector<std::vector
     if (getVerbose())
     {
         ss << "\nLongest Increasing Path Test Run On Input Matrix:\n\n"; 
-        for (int i = 0; i < matrix.size(); ++i)
+        for (unsigned i = 0; i < matrix.size(); ++i)
         {
             for (int val : matrix[i])
                 ss << val << " ";

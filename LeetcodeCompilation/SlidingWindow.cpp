@@ -24,7 +24,7 @@ int SlidingWindow::bestTimeToBuyAndSellStock(const std::vector<int>& prices)
     int maxProfit = 0;
     int minCost = INT_MAX;
 
-    for (int i = 0; i < prices.size(); ++i)
+    for (unsigned i = 0; i < prices.size(); ++i)
     {
         if (minCost > prices[i])
             minCost = prices[i]; // new cheapest cost seen
@@ -50,13 +50,13 @@ int SlidingWindow::lengthOfLongestSubstring(const std::string& s)
     std::unordered_map<char, int> charmap;
     int start = 0, maxlength = 0;
 
-    for (int i = 0; i < s.size(); ++i)
+    for (unsigned i = 0; i < s.size(); ++i)
     {
         if (charmap.find(s[i]) != charmap.end() && charmap[s[i]] >= start)
             start = charmap[s[i]] + 1;
 
         charmap[s[i]] = i; // last index of the character
-        maxlength = std::max(maxlength, i - start + 1);
+        maxlength = std::max(maxlength, static_cast<int>(i) - start + 1);
     }
 
     return maxlength;
@@ -83,7 +83,7 @@ int SlidingWindow::longestRepeatingCharacterReplacement(const std::string& s, in
     int count = 0;
     int mostFreq = 0;
 
-    for (int right = 0; right < s.size(); ++right)
+    for (int right = 0; right < static_cast<int>(s.size()); ++right)
     {
         charmap[s[right]]++;
 
@@ -94,7 +94,7 @@ int SlidingWindow::longestRepeatingCharacterReplacement(const std::string& s, in
         while ((right - left + 1) - mostFreq > k)
             charmap[s[left++]]--;
 
-        count = std::max(count, right - left + 1);
+        count = std::max(count, static_cast<int>(right) - left + 1);
     }
 
     return count;
@@ -118,13 +118,13 @@ bool SlidingWindow::permutationInString(const std::string& s1, const std::string
 
     if (s1.size() > s2.size()) return false;
 
-    for (int i = 0; i < s1.size(); i++)
+    for (unsigned i = 0; i < s1.size(); ++i)
     {
         hmap1[s1[i]]++;
         hmap2[s2[i]]++;
     }
 
-    for (int i = static_cast<int>(s1.size()); i < s2.size(); i++)
+    for (unsigned i = s1.size(); i < s2.size(); ++i)
     {
         if (hmap1 == hmap2)
             return true;
@@ -153,10 +153,9 @@ bool SlidingWindow::permutationInString(const std::string& s1, const std::string
 */
 std::string SlidingWindow::minimumWindowSubstring(const std::string& s, const std::string& t)
 {
-    int m = static_cast<int>(s.size()), n = static_cast<int>(t.size());
     std::unordered_map<char, int> tmap;
 
-    for (int i = 0; i < t.size(); ++i)
+    for (unsigned i = 0; i < t.size(); ++i)
         tmap[t[i]]++;
 
     std::unordered_map<char, int> windowcounts;
@@ -164,7 +163,7 @@ std::string SlidingWindow::minimumWindowSubstring(const std::string& s, const st
     int left = 0, right = 0, formed = 0, minLeft = 0,
         required = static_cast<int>(tmap.size()), minLength = INT_MAX;
 
-    for (right = 0; right < s.size(); ++right)
+    for (right = 0; right < static_cast<int>(s.size()); ++right)
     {
         char c = s[right];
         windowcounts[c]++;

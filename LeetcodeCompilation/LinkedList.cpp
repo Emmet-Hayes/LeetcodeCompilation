@@ -10,7 +10,7 @@ ListNode* LinkedList::createLinkedList(const std::vector<int>& arr)
     ListNode* curr = new ListNode(arr[0]);
     ListNode* head = curr;
 
-    for (int i = 1; i < arr.size(); ++i)
+    for (unsigned i = 1; i < arr.size(); ++i)
     {
         curr->next = new ListNode(arr[i]);
         curr = curr->next;
@@ -419,7 +419,7 @@ void LinkedList::LRUCache::put(int key, int value)
     }
 
     // Check if we need to evict the least recently used item
-    if (cachelist.size() == cap) 
+    if (static_cast<int>(cachelist.size()) == cap) 
     {
         auto& lru = cachelist.back();
         cachemap.erase(lru.first); // Erase from map using key

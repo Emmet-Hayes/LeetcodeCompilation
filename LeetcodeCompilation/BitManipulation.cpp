@@ -13,7 +13,7 @@
 int BitManipulation::singleNumber(const std::vector<int>& nums)
 {
     int result = 0;
-    for (int i = 0; i < nums.size(); ++i)
+    for (unsigned i = 0; i < nums.size(); ++i)
         result ^= nums[i];
     return result;
 }
@@ -39,7 +39,7 @@ std::vector<int> BitManipulation::countBits(int n)
 {
     std::vector<int> bits(n + 1, 0);
 
-    for (int i = 0; i < bits.size(); ++i)
+    for (unsigned i = 0; i < bits.size(); ++i)
     {
         int t = i;
         while (t > 0)
@@ -80,14 +80,14 @@ int BitManipulation::missingNumberHash(const std::vector<int>& nums)
 {
     std::unordered_map<int, int> numbermap;
     int max = 0;
-    for (int i = 0; i < nums.size(); ++i)
+    for (unsigned i = 0; i < nums.size(); ++i)
         if (max < nums[i])
             max = nums[i];
 
     for (int i = 0; i < max; ++i)
         numbermap[i] = 0;
 
-    for (int i = 0; i < nums.size(); ++i)
+    for (unsigned i = 0; i < nums.size(); ++i)
         numbermap[nums[i]]++;
 
     for (int i = 0; i < max; ++i)
@@ -149,7 +149,7 @@ int BitManipulation::reverseInteger(int x)
         xstr.erase(xstr.begin());
     }
 
-    int swapindex = 0;
+    unsigned swapindex = 0;
 
     while (swapindex < xstr.size() / 2)
     {
@@ -161,7 +161,7 @@ int BitManipulation::reverseInteger(int x)
     {
         std::string limit = isNegative ? "2147483648" : "2147483647";
 
-        for (int i = 0; i < xstr.size(); ++i)
+        for (unsigned i = 0; i < xstr.size(); ++i)
         {
             if (xstr[i] > limit[i]) return 0;
             if (xstr[i] < limit[i]) break;

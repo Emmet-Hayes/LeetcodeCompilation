@@ -104,7 +104,7 @@ std::vector<std::string> Stack::generateParenthesis(int n)
 
 void Stack::generateParenthesisRecursive(int openCount, int closeCount, int n, std::stack<char> current, std::vector<std::string>& result)
 {
-    if (current.size() == n * 2)
+    if (static_cast<int>(current.size()) == n * 2)
     {
         std::string str;
         while (!current.empty())
@@ -148,7 +148,7 @@ std::vector<int> Stack::dailyTemperatures(const std::vector<int>& temperatures)
     std::vector<int> answer(temperatures.size(), 0);
     std::stack<int> indexstack; // storing indexes of non-increasing temperatures
 
-    for (int i = 0; i < temperatures.size(); ++i)
+    for (unsigned i = 0; i < temperatures.size(); ++i)
     {
         while (!indexstack.empty() && temperatures[i] > temperatures[indexstack.top()])
         {
@@ -190,7 +190,6 @@ std::vector<int> Stack::dailyTemperatures(const std::vector<int>& temperatures)
 */
 int Stack::carFleet(int target, const std::vector<int>& position, const std::vector<int>& speed)
 {
-    int numFleets = 0;
     int n = static_cast<int>(position.size());
     std::vector<std::pair<int, int>> cars;
     for (int i = 0; i < n; ++i)
@@ -205,7 +204,7 @@ int Stack::carFleet(int target, const std::vector<int>& position, const std::vec
     // this vector is used like a stack that supports peeking elsewhere
     std::vector<double> stack;
 
-    for (int i = 0; i < cars.size(); ++i)
+    for (unsigned i = 0; i < cars.size(); ++i)
     {
         // adding all time-to-target calculations for cars to the stack
         stack.push_back((double)(target - cars[i].first) / cars[i].second);

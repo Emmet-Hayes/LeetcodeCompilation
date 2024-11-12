@@ -123,7 +123,7 @@ bool GraphTester::testNumberOfIslands(std::vector<std::vector<char>> grid, int e
     if (getVerbose())
     {
         ss << "\nNumber of Islands Test Run On Input Grid:\n\n";
-        for (int i = 0; i < grid.size(); ++i)
+        for (unsigned i = 0; i < grid.size(); ++i)
         {
             for (char val : grid[i])
                 ss << val << " ";
@@ -141,7 +141,7 @@ bool GraphTester::testNumberOfIslandsDFS(std::vector<std::vector<char>> grid, in
     if (getVerbose())
     {
         ss << "\nNumber of Islands (DFS) Test Run On Input Grid:\n\n";
-        for (int i = 0; i < grid.size(); ++i)
+        for (unsigned i = 0; i < grid.size(); ++i)
         {
             for (char val : grid[i])
                 ss << val << " ";
@@ -159,7 +159,7 @@ bool GraphTester::testNumberOfIslandsBFS(std::vector<std::vector<char>> grid, in
     if (getVerbose())
     {
         ss << "\nNumber of Islands Test Run On Input Grid:\n\n";
-        for (int i = 0; i < grid.size(); ++i)
+        for (unsigned i = 0; i < grid.size(); ++i)
         {
             for (char val : grid[i])
                 ss << val << " ";
@@ -185,7 +185,7 @@ bool GraphTester::testMaxAreaOfIsland(std::vector<std::vector<int>> grid, int ex
     if (getVerbose())
     {
         ss << "\nMax Area of Islands Test Run On Input Grid:\n\n";
-        for (int i = 0; i < grid.size(); ++i)
+        for (unsigned i = 0; i < grid.size(); ++i)
         {
             for (int val : grid[i])
                 ss << val << " ";
@@ -204,7 +204,7 @@ bool GraphTester::testPacificAtlanticWaterFlow(std::vector<std::vector<int>> hei
     if (getVerbose())
     {
         ss << "\nPacific Atlantic Water Flow Test Run On Input Grid:\n\n";
-        for (int i = 0; i < heights.size(); ++i)
+        for (unsigned i = 0; i < heights.size(); ++i)
         {
             for (int val : heights[i])
                 ss << val << " ";
@@ -220,7 +220,7 @@ bool GraphTester::testPacificAtlanticWaterFlow(std::vector<std::vector<int>> hei
     }
     if (actual.size() != expected.size())
         return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i].first != expected[i].first || actual[i].second != expected[i].second)
             return false;
     return true;
@@ -231,7 +231,7 @@ bool GraphTester::testSurroundedRegions(std::vector<std::vector<char>> board, st
     if (getVerbose())
     {
         ss << "\nSurrounded Regions Test Run On Input Grid:\n\n";
-        for (int i = 0; i < board.size(); ++i)
+        for (unsigned i = 0; i < board.size(); ++i)
         {
             for (char val : board[i])
                 ss << val << " ";
@@ -242,14 +242,14 @@ bool GraphTester::testSurroundedRegions(std::vector<std::vector<char>> board, st
     if (getVerbose())
     {
         ss << "\nResult:\n\n";
-        for (int i = 0; i < board.size(); ++i)
+        for (unsigned i = 0; i < board.size(); ++i)
         {
             for (char val : board[i])
                 ss << val << " ";
             ss << "\n";
         }
         ss << "\nExpected:\n\n";
-        for (int i = 0; i < expected.size(); ++i)
+        for (unsigned i = 0; i < expected.size(); ++i)
         {
             for (char val : expected[i])
                 ss << val << " ";
@@ -258,11 +258,11 @@ bool GraphTester::testSurroundedRegions(std::vector<std::vector<char>> board, st
     }
     if (board.size() != expected.size())
         return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
     {
         if (board[i].size() != expected[i].size())
             return false;
-        for (int j = 0; j < expected[i].size(); ++j)
+        for (unsigned j = 0; j < expected[i].size(); ++j)
             if (board[i][j] != expected[i][j])
                 return false;
     }
@@ -274,7 +274,7 @@ bool GraphTester::testRottingOranges(std::vector<std::vector<int>> grid, int exp
     if (getVerbose())
     {
         ss << "\nRotting Oranges Test Run On Input Grid:\n\n";
-        for (int i = 0; i < grid.size(); ++i)
+        for (unsigned i = 0; i < grid.size(); ++i)
         {
             for (int val : grid[i])
                 ss << val << " ";
@@ -319,7 +319,7 @@ bool GraphTester::testFindCourseOrder(int numCourses, std::vector<std::vector<in
     }
     if (actual.size() != expected.size())
         return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i] != expected[i])
             return false;
     return true;
@@ -343,7 +343,7 @@ bool GraphTester::testFindRedundantEdge(std::vector<std::vector<int>> edges, std
     }
     if (actual.size() != expected.size())
         return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i] != expected[i])
             return false;
     return true;
@@ -407,7 +407,7 @@ bool GraphTester::testSwimInRisingWater(std::vector<std::vector<int>> grid, int 
     if (getVerbose())
     {
         ss << "\nSwim in Rising Water Test Run On Input Grid:\n\n";
-        for (int i = 0; i < grid.size(); ++i)
+        for (unsigned i = 0; i < grid.size(); ++i)
         {
             for (int val : grid[i])
                 ss << val << " ";
@@ -426,9 +426,9 @@ bool GraphTester::testFindItinerary(std::vector<std::vector<std::string>> ticket
     if (getVerbose())
     {
         ss << "\nFind Itinerary Test Run on Input Ticket Vector:\n\n";
-        for (int i = 0; i < tickets.size(); ++i)
+        for (unsigned i = 0; i < tickets.size(); ++i)
         {
-            for (int j = 0; j < tickets[i].size(); ++j)
+            for (unsigned j = 0; j < tickets[i].size(); ++j)
                 ss << tickets[i][j] << " ";
             ss << "\n";
         }
@@ -442,11 +442,11 @@ bool GraphTester::testFindItinerary(std::vector<std::vector<std::string>> ticket
     }
     if (actual.size() != expected.size())
         return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
     {
         if (actual[i].size() != expected[i].size())
             return false;
-        for (int j = 0; j < expected[i].size(); ++j)
+        for (unsigned j = 0; j < expected[i].size(); ++j)
             if (actual[i][j] != expected[i][j])
                 return false;
     }

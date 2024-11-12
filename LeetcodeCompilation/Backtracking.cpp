@@ -22,7 +22,7 @@ std::vector<std::vector<int>> Backtracking::subsets(const std::vector<int>& nums
     return subsets;
 }
 
-void Backtracking::dfsSubsets(std::vector<std::vector<int>>& subsets, std::vector<int>& subset, int i, const std::vector<int>& nums)
+void Backtracking::dfsSubsets(std::vector<std::vector<int>>& subsets, std::vector<int>& subset, unsigned i, const std::vector<int>& nums)
 {
     // the decision tree is 2^n, either we add a value to the subset or we dont
     if (i >= nums.size())
@@ -44,11 +44,11 @@ std::vector<std::vector<int>> Backtracking::combinationSum(const std::vector<int
 {
     std::vector<std::vector<int>> combinations;
     std::vector<int> combo;
-    dfsCombinationSum(combinations, candidates, static_cast<int>(candidates.size()), combo, 0, 0, target);
+    dfsCombinationSum(combinations, candidates, combo, 0, 0, target);
     return combinations;
 }
 
-void Backtracking::dfsCombinationSum(std::vector<std::vector<int>>& combinations, const std::vector<int>& candidates, int n, std::vector<int>& combo, int i, int sum, int target)
+void Backtracking::dfsCombinationSum(std::vector<std::vector<int>>& combinations, const std::vector<int>& candidates, std::vector<int>& combo, unsigned i, int sum, int target)
 {
     if (i >= candidates.size() || sum > target)
         return;
@@ -60,11 +60,11 @@ void Backtracking::dfsCombinationSum(std::vector<std::vector<int>>& combinations
 
     // decision to add another candidate[i] to sum
     combo.push_back(candidates[i]);
-    dfsCombinationSum(combinations, candidates, n, combo, i, sum + candidates[i], target);
+    dfsCombinationSum(combinations, candidates, combo, i, sum + candidates[i], target);
 
     // decision to try adding the next candidate to sum
     combo.pop_back();
-    dfsCombinationSum(combinations, candidates, n, combo, i + 1, sum, target);
+    dfsCombinationSum(combinations, candidates, combo, i + 1, sum, target);
 }
 
 std::vector<std::vector<int>> Backtracking::permutations(std::vector<int>& nums)
@@ -74,7 +74,7 @@ std::vector<std::vector<int>> Backtracking::permutations(std::vector<int>& nums)
     return answer;
 }
 
-void Backtracking::dfsPermutations(std::vector<std::vector<int>>& answer, std::vector<int>& nums, int start)
+void Backtracking::dfsPermutations(std::vector<std::vector<int>>& answer, std::vector<int>& nums, unsigned start)
 {
     if (start >= nums.size() - 1)
     {
@@ -82,7 +82,7 @@ void Backtracking::dfsPermutations(std::vector<std::vector<int>>& answer, std::v
         return;
     }
 
-    for (int i = start; i < nums.size(); ++i)
+    for (unsigned i = start; i < nums.size(); ++i)
     {
         // try swapping to make a new permutation
         std::swap(nums[start], nums[i]);
@@ -100,13 +100,13 @@ std::vector<std::vector<int>> Backtracking::subsetsWithDup(std::vector<int>& num
     return subsets;
 }
 
-void Backtracking::dfsSubsetsWithDup(std::vector<std::vector<int>>& subsets, const std::vector<int>& nums, std::vector<int>& subset, int start)
+void Backtracking::dfsSubsetsWithDup(std::vector<std::vector<int>>& subsets, const std::vector<int>& nums, std::vector<int>& subset, unsigned start)
 {
     subsets.push_back(subset);
 
-    for (int j = start; j < nums.size(); ++j)
+    for (unsigned j = start; j < nums.size(); ++j)
     {
-        if (j != start && nums[j] == nums[j - 1])
+        if (j > start && nums[j] == nums[j - 1])
             continue; // skip values we already put in the subset
 
         // decision include the value in the subset
@@ -123,11 +123,11 @@ std::vector<std::vector<int>> Backtracking::combinationSumNoDup(std::vector<int>
     std::sort(candidates.begin(), candidates.end());
     std::vector<std::vector<int>> answer;
     std::vector<int> combo;
-    dfsCombinationSumNoDup(answer, candidates, combo, target, 0, 0);
+    dfsCombinationSumNoDup(answer, candidates, combo, 0, 0, target);
     return answer;
 }
 
-void Backtracking::dfsCombinationSumNoDup(std::vector<std::vector<int>>& answer, const std::vector<int>& candidates, std::vector<int>& combo, int target, int i, int sum)
+void Backtracking::dfsCombinationSumNoDup(std::vector<std::vector<int>>& answer, const std::vector<int>& candidates, std::vector<int>& combo, unsigned i, int sum, int target)
 {
     if (sum == target)
     {
@@ -137,7 +137,7 @@ void Backtracking::dfsCombinationSumNoDup(std::vector<std::vector<int>>& answer,
     if (i >= candidates.size() || sum > target)
         return;
 
-    for (int j = i; j < candidates.size(); ++j)
+    for (unsigned j = i; j < candidates.size(); ++j)
     {
         if (j != i && candidates[j] == candidates[j - 1])
             continue; // skip candidates that are equivalent
@@ -173,8 +173,8 @@ bool Backtracking::wordSearch(std::vector<std::vector<char>>& board, std::string
 void Backtracking::dfsWordSearch(std::vector<std::vector<char>>& board, const std::string& word, int i, int j, std::string& curr, bool& isFound)
 {
     if (curr.size() >= word.size() ||
-        i < 0 || i >= board.size() ||
-        j < 0 || j >= board[0].size() ||
+        i < 0 || i >= static_cast<int>(board.size()) ||
+        j < 0 || j >= static_cast<int>(board[0].size()) ||
         board[i][j] == '#')
         return;
 
@@ -203,7 +203,7 @@ std::vector<std::vector<std::string>> Backtracking::palindromePartition(const st
     return answer;
 }
 
-void Backtracking::dfsPalindrome(std::vector<std::vector<std::string>>& answer, std::vector<std::string>& partition, const std::string& s, int i)
+void Backtracking::dfsPalindrome(std::vector<std::vector<std::string>>& answer, std::vector<std::string>& partition, const std::string& s, unsigned i)
 {
     if (i >= s.size())
     {
@@ -211,7 +211,7 @@ void Backtracking::dfsPalindrome(std::vector<std::vector<std::string>>& answer, 
         return;
     }
 
-    for (int j = i; j < s.size(); ++j)
+    for (unsigned j = i; j < s.size(); ++j)
     {
         if (isPalindrome(s.substr(i, j - i + 1)))
         {
@@ -255,7 +255,7 @@ std::vector<std::string> Backtracking::letterCombinations(const std::string& dig
 
 void Backtracking::dfsPhoneNumber(std::vector<std::string>& combinations, std::string& combo, 
                                   const std::string& digits, std::unordered_map<char, std::string>& digitmap, 
-                                  int i, int k)
+                                  unsigned i, unsigned k)
 {
     if (combo.size() == digits.size())
     {
@@ -263,13 +263,13 @@ void Backtracking::dfsPhoneNumber(std::vector<std::string>& combinations, std::s
         return;
     }
 
-    for (int j = i; j < digits.size(); ++j)
+    for (unsigned j = i; j < digits.size(); ++j)
     {
         std::string chars = digitmap[digits[j]];
-        for (int k = 0; k < chars.size(); ++k)
+        for (unsigned d = 0; d < chars.size(); ++d)
         {
-            combo.push_back(chars[k]);
-            dfsPhoneNumber(combinations, combo, digits, digitmap, j + 1, k + 1);
+            combo.push_back(chars[d]);
+            dfsPhoneNumber(combinations, combo, digits, digitmap, j + 1, d + 1);
             combo.pop_back();
         }
     }

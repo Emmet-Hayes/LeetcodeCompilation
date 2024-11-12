@@ -79,7 +79,7 @@ int Intervals::minEraseOverlapIntervals(std::vector<std::pair<int, int>>& interv
     int result = 0;
     int prevEnd = intervals[0].second;
 
-    for (int i = 1; i < intervals.size(); ++i)
+    for (unsigned i = 1; i < intervals.size(); ++i)
     {
         // not overlapping if the start is greater than or equal to previous end
         if (intervals[i].first >= prevEnd)

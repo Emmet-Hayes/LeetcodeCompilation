@@ -106,7 +106,7 @@ int BinarySearch::kokoEatingBananas(const std::vector<int>& piles, int h)
     int left = 1;
     int right = INT_MIN;
 
-    for (int i = 0; i < piles.size(); ++i)
+    for (unsigned i = 0; i < piles.size(); ++i)
         if (right < piles[i])
             right = piles[i];
 
@@ -115,7 +115,7 @@ int BinarySearch::kokoEatingBananas(const std::vector<int>& piles, int h)
     {
         int mid = left + (right - left) / 2;
         long long sum = 0;
-        for (int i = 0; i < piles.size(); ++i)
+        for (unsigned i = 0; i < piles.size(); ++i)
         {
             if (piles[i] % mid == 0)
                 sum += piles[i] / mid;

@@ -7,19 +7,19 @@
 
 
 HeapAndPriorityQueue::KthLargest::KthLargest(int k, const std::vector<int>& nums)
-:   _k{ k }
+:   _k { k }
 {
     for (int val : nums)
         minheap.push(val);
 
-    while (minheap.size() > k)
+    while (static_cast<int>(minheap.size()) > k)
         minheap.pop();
 }
 
 int HeapAndPriorityQueue::KthLargest::add(int val)
 {
     minheap.push(val);
-    if (minheap.size() > _k)
+    if (static_cast<int>(minheap.size()) > _k)
         minheap.pop();
     return minheap.top();
 }

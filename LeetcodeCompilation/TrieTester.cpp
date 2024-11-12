@@ -71,7 +71,7 @@ bool TrieTester::testWordSearch(std::vector<std::vector<char>> board,
         ss << "\n";
     }
     if (actual.size() != expected.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i].compare(expected[i]) != 0)
             return false;
     return true;

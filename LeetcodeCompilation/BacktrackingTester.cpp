@@ -55,7 +55,7 @@ bool BacktrackingTester::testSubsets(std::vector<int> nums, std::vector<std::vec
         for (int val : nums)
             ss << val << " ";
         ss << "]\nResult:   [ [ ";
-        for (int i = 0; i < actual.size(); ++i)
+        for (unsigned i = 0; i < actual.size(); ++i)
         {
             for (int val : actual[i])
                 ss << val << " ";
@@ -65,7 +65,7 @@ bool BacktrackingTester::testSubsets(std::vector<int> nums, std::vector<std::vec
                 ss << "] ";
         }
         ss << "]\nExpected: [ [ ";
-        for (int i = 0; i < expected.size(); ++i)
+        for (unsigned i = 0; i < expected.size(); ++i)
         {
             for (int val : expected[i])
                 ss << val << " ";
@@ -77,10 +77,10 @@ bool BacktrackingTester::testSubsets(std::vector<int> nums, std::vector<std::vec
         ss << "]\n";
     }
     if (actual.size() != expected.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
     {
         if (actual[i].size() != expected[i].size()) return false;
-        for (int j = 0; j < expected[i].size(); ++j)
+        for (unsigned j = 0; j < expected[i].size(); ++j)
             if (actual[i][j] != expected[i][j])
                 return false;
     }
@@ -96,7 +96,7 @@ bool BacktrackingTester::testCombinationSum(std::vector<int> candidates, int tar
         for (int val : candidates)
             ss << val << " ";
         ss << "]\nTarget: " << target << "\nResult:   [ [ ";
-        for (int i = 0; i < actual.size(); ++i)
+        for (unsigned i = 0; i < actual.size(); ++i)
         {
             for (int val : actual[i])
                 ss << val << " ";
@@ -106,7 +106,7 @@ bool BacktrackingTester::testCombinationSum(std::vector<int> candidates, int tar
                 ss << "] ";
         }
         ss << "]\nExpected: [ [ ";
-        for (int i = 0; i < expected.size(); ++i)
+        for (unsigned i = 0; i < expected.size(); ++i)
         {
             for (int val : expected[i])
                 ss << val << " ";
@@ -118,10 +118,10 @@ bool BacktrackingTester::testCombinationSum(std::vector<int> candidates, int tar
         ss << "]\n";
     }
     if (actual.size() != expected.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
     {
         if (actual[i].size() != expected[i].size()) return false;
-        for (int j = 0; j < expected[i].size(); ++j)
+        for (unsigned j = 0; j < expected[i].size(); ++j)
             if (actual[i][j] != expected[i][j])
                 return false;
     }
@@ -137,7 +137,7 @@ bool BacktrackingTester::testPermutations(std::vector<int> nums, std::vector<std
         for (int val : nums)
             ss << val << " ";
         ss << "]\nResult:   [ [ ";
-        for (int i = 0; i < actual.size(); ++i)
+        for (unsigned i = 0; i < actual.size(); ++i)
         {
             for (int val : actual[i])
                 ss << val << " ";
@@ -147,7 +147,7 @@ bool BacktrackingTester::testPermutations(std::vector<int> nums, std::vector<std
                 ss << "] ";
         }
         ss << "]\nExpected: [ [ ";
-        for (int i = 0; i < expected.size(); ++i)
+        for (unsigned i = 0; i < expected.size(); ++i)
         {
             for (int val : expected[i])
                 ss << val << " ";
@@ -159,10 +159,10 @@ bool BacktrackingTester::testPermutations(std::vector<int> nums, std::vector<std
         ss << "]\n";
     }
     if (actual.size() != expected.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
     {
         if (actual[i].size() != expected[i].size()) return false;
-        for (int j = 0; j < expected[i].size(); ++j)
+        for (unsigned j = 0; j < expected[i].size(); ++j)
             if (actual[i][j] != expected[i][j])
                 return false;
     }
@@ -178,7 +178,7 @@ bool BacktrackingTester::testSubsetsWithDup(std::vector<int> nums, std::vector<s
         for (int val : nums)
             ss << val << " ";
         ss << "]\nResult:   [ [ ";
-        for (int i = 0; i < actual.size(); ++i)
+        for (unsigned i = 0; i < actual.size(); ++i)
         {
             for (int val : actual[i])
                 ss << val << " ";
@@ -188,7 +188,7 @@ bool BacktrackingTester::testSubsetsWithDup(std::vector<int> nums, std::vector<s
                 ss << "] ";
         }
         ss << "]\nExpected: [ [ ";
-        for (int i = 0; i < expected.size(); ++i)
+        for (unsigned i = 0; i < expected.size(); ++i)
         {
             for (int val : expected[i])
                 ss << val << " ";
@@ -200,10 +200,10 @@ bool BacktrackingTester::testSubsetsWithDup(std::vector<int> nums, std::vector<s
         ss << "]\n";
     }
     if (actual.size() != expected.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
     {
         if (actual[i].size() != expected[i].size()) return false;
-        for (int j = 0; j < expected[i].size(); ++j)
+        for (unsigned j = 0; j < expected[i].size(); ++j)
             if (actual[i][j] != expected[i][j])
                 return false;
     }
@@ -219,7 +219,7 @@ bool BacktrackingTester::testCombinationSumNoDup(std::vector<int> candidates, in
         for (int val : candidates)
             ss << val << " ";
         ss << "]\n" << target << "\nResult:   [ [ ";
-        for (int i = 0; i < actual.size(); ++i)
+        for (unsigned i = 0; i < actual.size(); ++i)
         {
             for (int val : actual[i])
                 ss << val << " ";
@@ -229,7 +229,7 @@ bool BacktrackingTester::testCombinationSumNoDup(std::vector<int> candidates, in
                 ss << "] ";
         }
         ss << "]\nExpected: [ [ ";
-        for (int i = 0; i < expected.size(); ++i)
+        for (unsigned i = 0; i < expected.size(); ++i)
         {
             for (int val : expected[i])
                 ss << val << " ";
@@ -241,10 +241,10 @@ bool BacktrackingTester::testCombinationSumNoDup(std::vector<int> candidates, in
         ss << "]\n";
     }
     if (actual.size() != expected.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
     {
         if (actual[i].size() != expected[i].size()) return false;
-        for (int j = 0; j < expected[i].size(); ++j)
+        for (unsigned j = 0; j < expected[i].size(); ++j)
             if (actual[i][j] != expected[i][j])
                 return false;
     }
@@ -276,7 +276,7 @@ bool BacktrackingTester::testPalindromePartition(std::string s, std::vector<std:
     {
         ss << "\nPalindrome Partition Test Run On Input String: " << s;
         ss << "\nResult:   [ [ ";
-        for (int i = 0; i < actual.size(); ++i)
+        for (unsigned i = 0; i < actual.size(); ++i)
         {
             for (std::string str : actual[i])
                 ss << str << " ";
@@ -286,7 +286,7 @@ bool BacktrackingTester::testPalindromePartition(std::string s, std::vector<std:
                 ss << "] ";
         }
         ss << "]\nExpected: [ [ ";
-        for (int i = 0; i < expected.size(); ++i)
+        for (unsigned i = 0; i < expected.size(); ++i)
         {
             for (std::string str : expected[i])
                 ss << str << " ";
@@ -298,10 +298,10 @@ bool BacktrackingTester::testPalindromePartition(std::string s, std::vector<std:
         ss << "]\n";
     }
     if (actual.size() != expected.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
     {
         if (actual[i].size() != expected[i].size()) return false;
-        for (int j = 0; j < expected[i].size(); ++j)
+        for (unsigned j = 0; j < expected[i].size(); ++j)
             if (actual[i][j].compare(expected[i][j]) != 0)
                 return false;
     }
@@ -322,7 +322,7 @@ bool BacktrackingTester::testLetterCombinations(std::string digits, std::vector<
         ss << "]\n";
     }
     if (actual.size() != expected.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i].compare(expected[i]))
             return false;
     return true;
@@ -335,14 +335,14 @@ bool BacktrackingTester::testSolveNQueens(int n, std::vector<std::vector<std::st
     {
         ss << "\nSolve N Queens Test Run On Input Value: " << n;
         ss << "\nResult:\n\n";
-        for (int i = 0; i < actual.size(); ++i)
+        for (unsigned i = 0; i < actual.size(); ++i)
         {
             for (std::string str : actual[i])
                 ss << str << "\n";
             ss << "\n";
         }
         ss << "\nExpected:\n\n";
-        for (int i = 0; i < expected.size(); ++i)
+        for (unsigned i = 0; i < expected.size(); ++i)
         {
             for (std::string str : expected[i])
                 ss << str << "\n";
@@ -350,10 +350,10 @@ bool BacktrackingTester::testSolveNQueens(int n, std::vector<std::vector<std::st
         }
     }
     if (actual.size() != expected.size()) return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
     {
         if (actual[i].size() != expected[i].size()) return false;
-        for (int j = 0; j < expected[i].size(); ++j)
+        for (unsigned j = 0; j < expected[i].size(); ++j)
             if (actual[i][j].compare(expected[i][j]) != 0)
                 return false;
     }

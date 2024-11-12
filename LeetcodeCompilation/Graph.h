@@ -43,7 +43,7 @@ public:
 
 private:
     void dfsRecursiveIslands(std::vector<std::vector<char>>& grid, int i, int j);
-    void dfsIslands(std::vector<std::vector<char>>& grid, int i, int j);
+    void dfsIterativeIslands(std::vector<std::vector<char>>& grid, int i, int j);
     void bfsIslands(std::vector<std::vector<char>>& grid, int i, int j);
     GraphNode* cloneGraphRecursive(GraphNode* node, std::unordered_map<GraphNode*, GraphNode*>& cloneMap);
     void dfsAreaIslands(std::vector<std::vector<int>>& grid, int i, int j, int& area);

@@ -89,11 +89,11 @@ bool MathAndGeometryTester::testRotateMatrix(std::vector<std::vector<int>> matri
     }
     if (matrix.size() != expected.size())
         return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
     {
         if (matrix[i].size() != expected[i].size())
             return false;
-        for (int j = 0; j < expected[i].size(); ++j)
+        for (unsigned j = 0; j < expected[i].size(); ++j)
             if (matrix[i][j] != expected[i][j])
                 return false;
     }
@@ -125,7 +125,7 @@ bool MathAndGeometryTester::testSpiralOrderMatrix(std::vector<std::vector<int>> 
     }
     if (actual.size() != expected.size())
         return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i] != expected[i])
             return false;
     return true;
@@ -164,11 +164,11 @@ bool MathAndGeometryTester::testSetMatrixZeroes(std::vector<std::vector<int>> ma
     }
     if (matrix.size() != expected.size())
         return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
     {
         if (matrix[i].size() != expected[i].size())
             return false;
-        for (int j = 0; j < expected[i].size(); ++j)
+        for (unsigned j = 0; j < expected[i].size(); ++j)
             if (matrix[i][j] != expected[i][j])
                 return false;
     }
@@ -202,7 +202,7 @@ bool MathAndGeometryTester::testPlusOne(std::vector<int> digits, std::vector<int
     }
     if (actual.size() != expected.size())
         return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i] != expected[i])
             return false;
     return true;

@@ -61,7 +61,7 @@ bool HeapAndPriorityQueueTester::testKClosestPointsToOrigin(std::vector<std::pai
     }
     if (actual.size() != expected.size())
         return false;
-    for (int i = 0; i < expected.size(); ++i)
+    for (unsigned i = 0; i < expected.size(); ++i)
         if (actual[i].first != expected[i].first || actual[i].second != expected[i].second)
             return false;
 

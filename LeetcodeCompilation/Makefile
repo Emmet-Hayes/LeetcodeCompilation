@@ -1,6 +1,5 @@
 CPPC = g++
-CPPFLAGS = -std=c++17
-#CPPFLAGS = -Wall -Werror
+CPPFLAGS = -std=c++14 -Wall -Werror
 
 all: LeetcodeCompilation
 

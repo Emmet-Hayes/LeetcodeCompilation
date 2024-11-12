@@ -5,17 +5,16 @@
 
 void MathAndGeometry::rotateMatrix(std::vector<std::vector<int>>& matrix)
 {
-    for (int i = 0; i < matrix.size(); ++i)
-        for (int j = i; j < matrix[i].size(); ++j)
+    for (unsigned i = 0; i < matrix.size(); ++i)
+        for (unsigned j = i; j < matrix[i].size(); ++j)
             std::swap(matrix[i][j], matrix[j][i]);
 
-    for (int i = 0; i < matrix.size(); ++i)
+    for (unsigned i = 0; i < matrix.size(); ++i)
         std::reverse(matrix[i].begin(), matrix[i].end());
 }
 
 std::vector<int> MathAndGeometry::spiralOrderMatrix(const std::vector<std::vector<int>>& matrix)
 {
-    int m = static_cast<int>(matrix.size()), n = static_cast<int>(matrix[0].size());
     std::vector<int> spiral;
 
     if (matrix.empty()) return spiral;
@@ -59,7 +58,7 @@ void MathAndGeometry::setMatrixZeroes(std::vector<std::vector<int>>& matrix)
     bool firstRowZero = false, firstColZero = false;
 
     // check first row for zeros
-    for (int j = 0; j < matrix[0].size(); ++j)
+    for (unsigned j = 0; j < matrix[0].size(); ++j)
     {
         if (matrix[0][j] == 0)
         {
@@ -69,7 +68,7 @@ void MathAndGeometry::setMatrixZeroes(std::vector<std::vector<int>>& matrix)
     }
 
     // check first column for zeros
-    for (int i = 0; i < matrix.size(); ++i)
+    for (unsigned i = 0; i < matrix.size(); ++i)
     {
         if (matrix[i][0] == 0)
         {
@@ -79,9 +78,9 @@ void MathAndGeometry::setMatrixZeroes(std::vector<std::vector<int>>& matrix)
     }
 
     // look for zeros in other rows and columns
-    for (int i = 1; i < matrix.size(); ++i)
+    for (unsigned i = 1; i < matrix.size(); ++i)
     {
-        for (int j = 1; j < matrix[i].size(); ++j)
+        for (unsigned j = 1; j < matrix[i].size(); ++j)
         {
             if (matrix[i][j] == 0)
             {
@@ -92,17 +91,17 @@ void MathAndGeometry::setMatrixZeroes(std::vector<std::vector<int>>& matrix)
     }
 
     // complete setting zeros to marked rows and columns
-    for (int i = 1; i < matrix.size(); ++i)
-        for (int j = 1; j < matrix[i].size(); ++j)
+    for (unsigned i = 1; i < matrix.size(); ++i)
+        for (unsigned j = 1; j < matrix[i].size(); ++j)
             if (matrix[i][0] == 0 || matrix[0][j] == 0)
                 matrix[i][j] = 0;
 
     // Zero the first row and column if necessary
     if (firstRowZero)
-        for (int j = 0; j < matrix[0].size(); ++j)
+        for (unsigned j = 0; j < matrix[0].size(); ++j)
             matrix[0][j] = 0;
     if (firstColZero)
-        for (int i = 0; i < matrix.size(); ++i)
+        for (unsigned i = 0; i < matrix.size(); ++i)
             matrix[i][0] = 0;
 }
 
@@ -177,9 +176,9 @@ std::string MathAndGeometry::stringMultiply(std::string& num1, std::string& num2
     std::reverse(num2.begin(), num2.end());
 
     // simulating elementary school multiplication
-    for (int i = 0; i < num1.size(); ++i)
+    for (unsigned i = 0; i < num1.size(); ++i)
     {
-        for (int j = 0; j < num2.size(); ++j)
+        for (unsigned j = 0; j < num2.size(); ++j)
         {
             int digit = (num1[i] - '0') * (num2[j] - '0');
             digits[i + j] += digit % 10;
@@ -188,7 +187,7 @@ std::string MathAndGeometry::stringMultiply(std::string& num1, std::string& num2
     }
 
     // deal with carries that are left over from last operation
-    for (int i = 0; i < digits.size() - 1; ++i)
+    for (unsigned i = 0; i < digits.size() - 1; ++i)
     {
         if (digits[i] > 9)
         {
@@ -203,7 +202,7 @@ std::string MathAndGeometry::stringMultiply(std::string& num1, std::string& num2
 
     // convert digits to string
     std::string answer;
-    for (int i = 0; i < digits.size(); ++i)
+    for (unsigned i = 0; i < digits.size(); ++i)
         answer += digits[i] + '0'; // convert back into char representation of digit
 
     //remove extra 0's from the front

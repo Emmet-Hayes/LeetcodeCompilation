@@ -33,9 +33,9 @@ int Greedy::maximumSubarray(const std::vector<int>& nums)
 */
 bool Greedy::jumpGame(const std::vector<int>& nums)
 {
-    int maxReach = 0;
+    unsigned maxReach = 0;
 
-    for (int i = 0; i < nums.size(); ++i)
+    for (unsigned i = 0; i < nums.size(); ++i)
     {
         if (i > maxReach)
             return false;
@@ -53,9 +53,9 @@ bool Greedy::jumpGame(const std::vector<int>& nums)
 */
 int Greedy::jumpGameMinJumps(const std::vector<int>& nums)
 {
-    int maxReach = nums[0];
-    int currentEnd = nums[0];
-    int transitions = 0;
+    unsigned maxReach = nums[0];
+    unsigned currentEnd = nums[0];
+    unsigned transitions = 0;
 
     if (nums.size() == 1)
         return 0;
@@ -64,7 +64,7 @@ int Greedy::jumpGameMinJumps(const std::vector<int>& nums)
     if (maxReach >= nums.size() - 1)
         return 1;
 
-    for (int i = 1; i < nums.size(); ++i)
+    for (unsigned i = 1; i < nums.size(); ++i)
     {
         if (i > maxReach)
             return 0;
@@ -96,17 +96,17 @@ int Greedy::jumpGameMinJumps(const std::vector<int>& nums)
 int Greedy::canCompleteCircuit(const std::vector<int>& gas, const std::vector<int>& cost)
 {
     int gassum = 0, costsum = 0;
-    for (int i = 0; i < gas.size(); ++i)
+    for (unsigned i = 0; i < gas.size(); ++i)
         gassum += gas[i];
 
-    for (int i = 0; i < cost.size(); ++i)
+    for (unsigned i = 0; i < cost.size(); ++i)
         costsum += cost[i];
 
     if (gassum < costsum)
         return -1;
 
     int start = 0, tank = 0;
-    for (int i = 0; i < gas.size(); ++i)
+    for (unsigned i = 0; i < gas.size(); ++i)
     {
         tank += gas[i] - cost[i];
         if (tank < 0)
@@ -149,7 +149,7 @@ bool Greedy::mergeTriplets(const std::vector<std::vector<int>>& triplets, const 
 {
     std::vector<bool> found(3, false);
     // find the target triplet for each of the 3 indices by scanning the other triplets for the value you want
-    for (int i = 0; i < triplets.size(); ++i)
+    for (unsigned i = 0; i < triplets.size(); ++i)
     {
         if (triplets[i][0] > target[0] || triplets[i][1] > target[1] || triplets[i][2] > target[2])
             continue;
@@ -169,13 +169,13 @@ std::vector<int> Greedy::partitionLabels(const std::string& s)
 {
     // keep track of last index of each char
     std::unordered_map<char, int> lastmap;
-    for (int i = 0; i < s.size(); ++i)
+    for (unsigned i = 0; i < s.size(); ++i)
         lastmap[s[i]] = i;
 
     std::vector<int> partitionsizes;
     int end = 0;
     int size = 0;
-    for (int i = 0; i < s.size(); ++i)
+    for (int i = 0; i < static_cast<int>(s.size()); ++i)
     {
         size++;
         end = std::max(end, lastmap[s[i]]);
@@ -193,7 +193,7 @@ bool Greedy::checkValidParenthesis(const std::string& s)
 {
     int leftMin = 0, leftMax = 0;
 
-    for (int i = 0; i < s.size(); ++i)
+    for (unsigned i = 0; i < s.size(); ++i)
     {
         if (s[i] == '(')
         {

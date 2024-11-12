@@ -13,7 +13,6 @@
 */
 TreeNode* Tree::constructBinaryTreeBasic(const std::vector<int>& inorder)
 {
-    int index = 0;
     return constructBinaryTreeBasicRecursive(inorder, 0, static_cast<int>(inorder.size()) - 1);
 }
 
@@ -471,7 +470,7 @@ int Tree::postOrderMaximumPathDown(TreeNode* node, int& maxSum)
 TreeNode* Tree::constructBinaryTree(std::vector<int> preorder, std::vector<int> inorder)
 {
     std::unordered_map<int, int> indexMap;
-    for (int i = 0; i < inorder.size(); ++i)
+    for (unsigned i = 0; i < inorder.size(); ++i)
         indexMap[inorder[i]] = i;
 
     return constructBinaryTreeRecursive(preorder.begin(), preorder.end(), indexMap, 0, static_cast<int>(inorder.size()) - 1);
@@ -520,7 +519,7 @@ TreeNode* Tree::CodecRecursive::deserialize(const std::string& data)
 
 TreeNode* Tree::CodecRecursive::preorderDeserialize(TreeNode*& root, const std::vector<std::string>& vals, int& index)
 {
-    if (index >= vals.size())
+    if (index >= static_cast<int>(vals.size()))
         return nullptr;
 
     std::string snode = vals[index];

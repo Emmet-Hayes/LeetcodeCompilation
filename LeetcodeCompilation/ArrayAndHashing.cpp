@@ -18,7 +18,7 @@ bool ArrayAndHashing::containsDuplicate(std::vector<int>& nums)
 {
     std::sort(nums.begin(), nums.end());
 
-    for (int i = 1; i < nums.size(); ++i)
+    for (unsigned i = 1; i < nums.size(); ++i)
         if (nums[i] == nums[i - 1])
             return true;
 
@@ -41,7 +41,7 @@ bool ArrayAndHashing::containsDuplicateFast(const std::vector<int>& nums)
 {
     std::unordered_set<int> values;
 
-    for (int i = 0; i < nums.size(); ++i)
+    for (unsigned i = 0; i < nums.size(); ++i)
     {
         if (values.find(nums[i]) != values.end())
             return true;
@@ -72,10 +72,10 @@ bool ArrayAndHashing::isAnagram(const std::string& s, const std::string& t)
     std::unordered_map<char, int> charmaps;
     std::unordered_map<char, int> charmapt;
 
-    for (int i = 0; i < s.size(); ++i)
+    for (unsigned i = 0; i < s.size(); ++i)
         charmaps[s[i]]++;
 
-    for (int i = 0; i < t.size(); ++i)
+    for (unsigned i = 0; i < t.size(); ++i)
         charmapt[t[i]]++;
 
     for (auto& pair : charmaps)
@@ -101,7 +101,7 @@ std::pair<int, int> ArrayAndHashing::twoSum(const std::vector<int>& nums, int ta
 {
     std::vector<std::pair<int, int>> numsWithIndices;
 
-    for (int i = 0; i < nums.size(); ++i)
+    for (unsigned i = 0; i < nums.size(); ++i)
         numsWithIndices.push_back({ nums[i], i });
 
     // Sort the array based on the values
@@ -143,7 +143,7 @@ std::pair<int, int> ArrayAndHashing::twoSumFast(const std::vector<int>& nums, in
 {
     std::unordered_map<int, int> indexmap;
 
-    for (int i = 0; i < nums.size(); ++i)
+    for (unsigned i = 0; i < nums.size(); ++i)
     {
         if (indexmap.find(target - nums[i]) != indexmap.end())
             return { indexmap[target - nums[i]], i };
@@ -195,7 +195,7 @@ std::vector<int> ArrayAndHashing::topKFrequent(const std::vector<int>& nums, int
     // count occurences of each value
     std::unordered_map<int, int> countmap;
     int n = static_cast<int>(nums.size());
-    for (int i = 0; i < nums.size(); ++i)
+    for (unsigned i = 0; i < nums.size(); ++i)
         countmap[nums[i]]++;
 
     // now we make buckets to store the number of occurences of each value
@@ -205,12 +205,12 @@ std::vector<int> ArrayAndHashing::topKFrequent(const std::vector<int>& nums, int
 
     // Construct the final answer by iterating through buckets from highest to lowest frequency
     std::vector<int> answer;
-    for (int freq = n; freq >= 0 && answer.size() < k; --freq) 
+    for (int freq = n; freq >= 0 && static_cast<int>(answer.size()) < k; --freq) 
     {
         for (const int& num : countbuckets[freq]) 
         {
             answer.push_back(num);
-            if (answer.size() == k) 
+            if (static_cast<int>(answer.size()) == k) 
                 // Stop once we've added k elements to the answer
                 break;
         }
@@ -232,7 +232,7 @@ std::vector<int> ArrayAndHashing::topKFrequentAlt(const std::vector<int>& nums, 
 {
     // count occurences of each value
     std::unordered_map<int, int> countmap;
-    for (int i = 0; i < nums.size(); ++i)
+    for (unsigned i = 0; i < nums.size(); ++i)
         countmap[nums[i]]++;
 
     // prepare a vector to be heapified
@@ -311,10 +311,10 @@ std::vector<int> ArrayAndHashing::productExceptSelf(const std::vector<int>& nums
 bool ArrayAndHashing::isValidSudoku(const std::vector<std::vector<char>>& board)
 {
     // scan horizontally
-    for (int i = 0; i < board.size(); ++i)
+    for (unsigned i = 0; i < board.size(); ++i)
     {
         std::unordered_map<char, int> horizontalmap;
-        for (int j = 0; j < board[i].size(); ++j)
+        for (unsigned j = 0; j < board[i].size(); ++j)
         {
             char val = board[i][j];
             if (val != '.')
@@ -327,10 +327,10 @@ bool ArrayAndHashing::isValidSudoku(const std::vector<std::vector<char>>& board)
     }
 
     // scan vertically
-    for (int i = 0; i < board.size(); ++i)
+    for (unsigned i = 0; i < board.size(); ++i)
     {
         std::unordered_map<char, int> verticalmap;
-        for (int j = 0; j < board[i].size(); ++j)
+        for (unsigned j = 0; j < board[i].size(); ++j)
         {
             char val = board[j][i];
             if (val != '.')
@@ -381,7 +381,7 @@ int ArrayAndHashing::longestConsecutiveSequence(const std::vector<int>& nums)
     std::unordered_set<int> numset(nums.begin(), nums.end());
 
     int longestconsecutivecount = 0;
-    for (int i = 0; i < nums.size(); ++i)
+    for (unsigned i = 0; i < nums.size(); ++i)
     {
         // only count if num is the start of a sequence
         if (!numset.count(nums[i] - 1))
@@ -441,14 +441,14 @@ void ArrayAndHashing::mergeSortedArray(std::vector<int>& nums1, int m, const std
         nums2index++;
     }
 
-    for (int i = 0; i < mergednums.size(); ++i)
+    for (unsigned i = 0; i < mergednums.size(); ++i)
         nums1[i] = mergednums[i];
 }
 
 int ArrayAndHashing::removeElement(std::vector<int>& nums, int val)
 {
     int index = 0;
-    for (int i = 0; i < nums.size(); i++)
+    for (unsigned i = 0; i < nums.size(); i++)
     {
         if (nums[i] != val)
         {
@@ -465,7 +465,7 @@ int ArrayAndHashing::removeDuplicatesSortedArray(std::vector<int>& nums)
         return nums.size();
 
     int writeindex = 1;
-    for (int readindex = 1; readindex < nums.size(); ++readindex)
+    for (unsigned readindex = 1; readindex < nums.size(); ++readindex)
     {
         if (nums[readindex] != nums[readindex - 1])
         {
@@ -482,7 +482,7 @@ int ArrayAndHashing::removeDuplicatesSortedArrayMostTwice(std::vector<int>& nums
     if (nums.size() < 3) return nums.size();
 
     int k = 2; // start at 3rd element (slow pointer)
-    for (int i = 2; i < nums.size(); ++i) // i is fast pointer
+    for (unsigned i = 2; i < nums.size(); ++i) // i is fast pointer
         if (nums[i] != nums[k - 2])
             nums[k++] = nums[i];
 
@@ -495,7 +495,7 @@ int ArrayAndHashing::majorityElement(const std::vector<int>& nums)
     int count = 0;
     int major = 0;
 
-    for (int i = 0; i < nums.size(); ++i)
+    for (unsigned i = 0; i < nums.size(); ++i)
     {
         if (count == 0)
             major = nums[i];
@@ -560,7 +560,7 @@ int ArrayAndHashing::candy(std::vector<int>& ratings)
 int ArrayAndHashing::romanToInteger(std::string s)
 {
     int translation = 0;
-    for (int i = 0; i < s.size(); ++i)
+    for (unsigned i = 0; i < s.size(); ++i)
     {
         switch (s[i])
         {
@@ -575,7 +575,7 @@ int ArrayAndHashing::romanToInteger(std::string s)
     }
 
     // now we do a pass for the prefix cases
-    for (int i = 1; i < s.size(); ++i)
+    for (unsigned i = 1; i < s.size(); ++i)
     {
         if (s[i] == 'V' || s[i] == 'X')
             if (s[i - 1] == 'I')

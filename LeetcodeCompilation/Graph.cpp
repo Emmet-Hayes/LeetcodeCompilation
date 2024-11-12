@@ -16,12 +16,10 @@ int Graph::numberOfIslands(std::vector<std::vector<char>>& grid)
 {
     if (grid.empty()) return 0;
 
-    int rows = static_cast<int>(grid.size());
-    int columns = static_cast<int>(grid[0].size());
     int numIslands = 0;
-    for (int r = 0; r < rows; ++r)
+    for (unsigned r = 0; r < grid.size(); ++r)
     {
-        for (int c = 0; c < columns; ++c)
+        for (unsigned c = 0; c < grid[0].size(); ++c)
         {
             if (grid[r][c] == '1')
             {
@@ -37,7 +35,9 @@ int Graph::numberOfIslands(std::vector<std::vector<char>>& grid)
 void Graph::dfsRecursiveIslands(std::vector<std::vector<char>>& grid, int i, int j)
 {
     // if current cell is already explored or out of bounds, end search
-    if (i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size() || grid[i][j] != '1')
+    if (i < 0 || i >= static_cast<int>(grid.size())    || 
+        j < 0 || j >= static_cast<int>(grid[0].size()) || 
+        grid[i][j] != '1')
         return;
 
     grid[i][j] = '#'; // labelled as explored
@@ -58,17 +58,15 @@ int Graph::numberOfIslandsDFS(std::vector<std::vector<char>>& grid)
 {
     if (grid.empty()) return 0;
 
-    int rows = static_cast<int>(grid.size());
-    int columns = static_cast<int>(grid[0].size());
     int numIslands = 0;
-    for (int r = 0; r < rows; ++r)
+    for (unsigned r = 0; r < grid.size(); ++r)
     {
-        for (int c = 0; c < columns; ++c)
+        for (unsigned c = 0; c < grid[0].size(); ++c)
         {
             if (grid[r][c] == '1')
             {
                 ++numIslands;
-                dfsIslands(grid, r, c);
+                dfsIterativeIslands(grid, r, c);
             }
         }
     }
@@ -76,7 +74,7 @@ int Graph::numberOfIslandsDFS(std::vector<std::vector<char>>& grid)
     return numIslands;
 }
 
-void Graph::dfsIslands(std::vector<std::vector<char>>& grid, int i, int j)
+void Graph::dfsIterativeIslands(std::vector<std::vector<char>>& grid, int i, int j)
 {
     std::stack<std::pair<int, int>> s;
     s.push({ i, j });
@@ -87,13 +85,12 @@ void Graph::dfsIslands(std::vector<std::vector<char>>& grid, int i, int j)
         s.pop();
 
         // if cell not discovered and not out of bounds
-        if (v.first >= 0 && v.first < grid.size() &&
-            v.second >= 0 && v.second < grid[0].size() &&
+        if (v.first  >= 0 && v.first  < static_cast<int>(grid.size())    &&
+            v.second >= 0 && v.second < static_cast<int>(grid[0].size()) &&
             grid[v.first][v.second] == '1')
         {
-            grid[v.first][v.second] = '#'; // label as discovered
-            // outgoing edges
-            s.push({ v.first + 1, v.second });
+            grid[v.first][v.second] = '#';     // label as discovered
+            s.push({ v.first + 1, v.second }); // outgoing edges
             s.push({ v.first - 1, v.second });
             s.push({ v.first, v.second + 1 });
             s.push({ v.first, v.second - 1 });
@@ -112,23 +109,20 @@ int Graph::numberOfIslandsBFS(std::vector<std::vector<char>>& grid)
 {
     if (grid.empty()) return 0;
 
-    int rows = static_cast<int>(grid.size());
-    int columns = static_cast<int>(grid[0].size());
-    int islands = 0;
-
-    for (int r = 0; r < rows; ++r)
+    int numIslands = 0;
+    for (unsigned r = 0; r < grid.size(); ++r)
     {
-        for (int c = 0; c < columns; ++c)
+        for (unsigned c = 0; c < grid[0].size(); ++c)
         {
             if (grid[r][c] == '1')
             {
-                ++islands;
+                ++numIslands;
                 bfsIslands(grid, r, c);
             }
         }
     }
 
-    return islands;
+    return numIslands;
 }
 
 void Graph::bfsIslands(std::vector<std::vector<char>>& grid, int i, int j)
@@ -145,11 +139,13 @@ void Graph::bfsIslands(std::vector<std::vector<char>>& grid, int i, int j)
         std::vector<std::pair<int, int>> directions = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} }; // spread cardinally
         for (auto& dir : directions)
         {
-            int nx = v.first + dir.first, ny = v.second + dir.second;
-            if (nx >= 0 && nx < grid.size() && ny >= 0 && ny < grid[0].size() && grid[nx][ny] == '1')
+            int dx = v.first + dir.first, dy = v.second + dir.second;
+            if (dx >= 0 && dx < static_cast<int>(grid.size())    && 
+                dy >= 0 && dy < static_cast<int>(grid[0].size()) && 
+                grid[dx][dy] == '1')
             {
-                q.push({ nx, ny });
-                grid[nx][ny] = '0';
+                q.push({ dx, dy });
+                grid[dx][dy] = '0';
             }
         }
     }
@@ -198,9 +194,9 @@ GraphNode* Graph::cloneGraphRecursive(GraphNode* node, std::unordered_map<GraphN
 int Graph::maxAreaOfIsland(std::vector<std::vector<int>>& grid)
 {
     int maxAreaIsland = 0;
-    for (int i = 0; i < grid.size(); ++i)
+    for (unsigned i = 0; i < grid.size(); ++i)
     {
-        for (int j = 0; j < grid[0].size(); ++j)
+        for (unsigned j = 0; j < grid[0].size(); ++j)
         {
             int currentArea = 0;
             dfsAreaIslands(grid, i, j, currentArea);
@@ -214,7 +210,8 @@ int Graph::maxAreaOfIsland(std::vector<std::vector<int>>& grid)
 void Graph::dfsAreaIslands(std::vector<std::vector<int>>& grid, int i, int j, int& area)
 {
     // if cell is out of bounds or already visited end search
-    if (i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size() || grid[i][j] != 1)
+    if (i < 0 || i >= static_cast<int>(grid.size()) || 
+        j < 0 || j >= static_cast<int>(grid[0].size()) || grid[i][j] != 1)
         return;
 
     grid[i][j] = 2; // mark as visited
@@ -231,22 +228,22 @@ void Graph::dfsAreaIslands(std::vector<std::vector<int>>& grid, int i, int j, in
 /**
 *
 * Complexity:
-* Time: O(m*n)
-* Space: O(n)
+* Time: O(mn log (mn))
+* Space: O(mn)
 */
 std::vector<std::pair<int, int>> Graph::pacificAtlanticWaterFlow(const std::vector<std::vector<int>>& heights)
 {
     std::set<std::pair<int, int>> pac, atl;
 
     // checking target columns (left column is pacific, right column is atlantic)
-    for (int i = 0; i < heights[0].size(); ++i)
+    for (unsigned i = 0; i < heights[0].size(); ++i)
     {
         dfsWaterFlow(heights, 0, i, pac, heights[0][i]);
         dfsWaterFlow(heights, static_cast<int>(heights.size()) - 1, i, atl, heights[heights.size() - 1][i]);
     }
 
     // checking target rows (top row is pacific, bottom row is atlantic)
-    for (int i = 0; i < heights.size(); ++i)
+    for (unsigned i = 0; i < heights.size(); ++i)
     {
         dfsWaterFlow(heights, i, 0, pac, heights[i][0]);
         dfsWaterFlow(heights, i, static_cast<int>(heights[0].size()) - 1, atl, heights[i][heights[0].size() - 1]);
@@ -254,8 +251,8 @@ std::vector<std::pair<int, int>> Graph::pacificAtlanticWaterFlow(const std::vect
 
     // grab cells that are present in both sets
     std::vector<std::pair<int, int>> answer;
-    for (int i = 0; i < heights.size(); ++i)
-        for (int j = 0; j < heights[i].size(); ++j)
+    for (unsigned i = 0; i < heights.size(); ++i)
+        for (unsigned j = 0; j < heights[i].size(); ++j)
             if (pac.find({ i, j }) != pac.end() && atl.find({ i, j }) != atl.end())
                 answer.push_back({ i, j });
 
@@ -264,8 +261,9 @@ std::vector<std::pair<int, int>> Graph::pacificAtlanticWaterFlow(const std::vect
 
 void Graph::dfsWaterFlow(const std::vector<std::vector<int>>& heights, int i, int j, std::set<std::pair<int, int>>& visited, int height)
 {
-    if (visited.find({ i, j }) != visited.end() ||
-        i < 0 || i >= heights.size() || j < 0 || j >= heights[0].size() || heights[i][j] < height)
+    if (i < 0 || i >= static_cast<int>(heights.size()) || 
+        j < 0 || j >= static_cast<int>(heights[0].size()) || 
+        visited.find({ i, j }) != visited.end() || heights[i][j] < height)
         return;
 
     visited.insert({ i, j });
@@ -285,27 +283,24 @@ void Graph::dfsWaterFlow(const std::vector<std::vector<int>>& heights, int i, in
 */
 void Graph::surroundedRegions(std::vector<std::vector<char>>& board)
 {
-    int m = static_cast<int>(board.size());
-    int n = static_cast<int>(board[0].size());
-
     // check borders of matrix rows for O's to start dfs from
-    for (int i = 0; i < m; ++i)
+    for (unsigned i = 0; i < board.size(); ++i)
     {
         if (board[i][0] == 'O')     dfsRegions(board, i, 0);
-        if (board[i][n - 1] == 'O') dfsRegions(board, i, n - 1);
+        if (board[i][board.size() - 1] == 'O') dfsRegions(board, i, board.size() - 1);
     }
 
     // now for columns
-    for (int j = 0; j < n; ++j)
+    for (unsigned j = 0; j < board[0].size(); ++j)
     {
         if (board[0][j] == 'O')     dfsRegions(board, 0, j);
-        if (board[m - 1][j] == 'O') dfsRegions(board, m - 1, j);
+        if (board[board[0].size() - 1][j] == 'O') dfsRegions(board, board[0].size() - 1, j);
     }
 
     // flip V's to O's and O's to X's (since they would have been visited if they weren't surrounded)
-    for (int i = 0; i < m; ++i)
+    for (unsigned i = 0; i < board.size(); ++i)
     {
-        for (int j = 0; j < n; ++j)
+        for (unsigned j = 0; j < board[0].size(); ++j)
         {
             if (board[i][j] == 'O') board[i][j] = 'X';
             if (board[i][j] == 'V') board[i][j] = 'O';
@@ -317,7 +312,9 @@ void Graph::dfsRegions(std::vector<std::vector<char>>& board, int i, int j)
 {
     // for each cell that we visit, check neighbors
     // if a cell is on the edge of the matrix, then its the case that it can't be surrounded.
-    if (i >= board.size() || i < 0 || j >= board[0].size() || j < 0 || board[i][j] != 'O')
+    if (i < 0 || i >= static_cast<int>(board.size())    || 
+        j < 0 || j >= static_cast<int>(board[0].size()) || 
+        board[i][j] != 'O')
         return;
 
     // mark as visited
@@ -341,16 +338,16 @@ int Graph::rottingOranges(std::vector<std::vector<int>>& grid)
 {
     // find starting points to start bfs from (all start at the same time)
     std::vector<std::pair<int, int>> startingpoints;
-    for (int i = 0; i < grid.size(); ++i)
-        for (int j = 0; j < grid[0].size(); ++j)
+    for (unsigned i = 0; i < grid.size(); ++i)
+        for (unsigned j = 0; j < grid[0].size(); ++j)
             if (grid[i][j] == 2) // a rotten orange
                 startingpoints.push_back({ i, j });
 
     int time = multibfsOranges(grid, startingpoints);
 
-    // now we check for any fresh oranges
-    for (int i = 0; i < grid.size(); ++i)
-        for (int j = 0; j < grid[0].size(); ++j)
+    // check for any fresh oranges left over from rotting step
+    for (unsigned i = 0; i < grid.size(); ++i)
+        for (unsigned j = 0; j < grid[0].size(); ++j)
             if (grid[i][j] == 1)
                 return -1;
 
@@ -377,11 +374,13 @@ int Graph::multibfsOranges(std::vector<std::vector<int>>& grid, std::vector<std:
             // Process each direction
             for (auto& dir : directions)
             {
-                int nx = v.first + dir.first, ny = v.second + dir.second;
-                if (nx >= 0 && nx < grid.size() && ny >= 0 && ny < grid[0].size() && grid[nx][ny] == 1)
+                int dx = v.first + dir.first, dy = v.second + dir.second;
+                if (dx >= 0 && dx < static_cast<int>(grid.size())    && 
+                    dy >= 0 && dy < static_cast<int>(grid[0].size()) && 
+                    grid[dx][dy] == 1)
                 {
-                    grid[nx][ny] = 2; // Rot the orange
-                    q.push({ nx, ny });
+                    grid[dx][dy] = 2; // Rot the orange
+                    q.push({ dx, dy });
                 }
             }
         }
@@ -401,7 +400,7 @@ int Graph::multibfsOranges(std::vector<std::vector<int>>& grid, std::vector<std:
 bool Graph::canFinishCourses(int numCourses, const std::vector<std::vector<int>>& prerequisites)
 {
     std::unordered_map<int, std::vector<int>> prereqMap;
-    for (int i = 0; i < prerequisites.size(); ++i)
+    for (unsigned i = 0; i < prerequisites.size(); ++i)
         prereqMap[prerequisites[i][0]].push_back(prerequisites[i][1]);
 
     std::unordered_set<int> visited;
@@ -450,7 +449,7 @@ std::vector<int> Graph::findCourseOrder(int numCourses, const std::vector<std::v
     if (numCourses == 1 && prerequisites.size() == 1 && prerequisites[0].empty())
         return { 0 };
     std::unordered_map<int, std::vector<int>> prereqMap;
-    for (int i = 0; i < prerequisites.size(); ++i)
+    for (unsigned i = 0; i < prerequisites.size(); ++i)
         prereqMap[prerequisites[i][0]].push_back(prerequisites[i][1]);
 
     std::unordered_set<int> visited;
@@ -502,7 +501,7 @@ std::vector<int> Graph::findRedundantEdge(const std::vector<std::vector<int>>& e
     // Union-Find Algorithm solution
     int n = static_cast<int>(edges.size());
     std::vector<int> parents(n + 1);
-    for (int i = 0; i < parents.size(); ++i)
+    for (unsigned i = 0; i < parents.size(); ++i)
         parents[i] = i;
 
     std::vector<int> ranks(n + 1, 1);
@@ -579,7 +578,7 @@ int Graph::wordLadderLength(const std::string& beginWord, const std::string& end
             dict.erase(v);
 
             // edges are to words that are only one letter away from current word
-            for (int j = 0; j < v.length(); ++j)
+            for (unsigned j = 0; j < v.length(); ++j)
             {
                 std::string nextWord = v;
                 for (char ch = 'a'; ch <= 'z'; ++ch)
@@ -601,16 +600,14 @@ int Graph::wordLadderLength(const std::string& beginWord, const std::string& end
 
 int Graph::minCostToConnectAllPoints(const std::vector<std::pair<int, int>>& points)
 {
-    int n = static_cast<int>(points.size());
-
     // creating edges between every node
     // key = start node: value = pair<end node, cost>
     std::unordered_map<int, std::vector<std::pair<int, int>>> adjMap;
-    for (int i = 0; i < n; ++i)
+    for (unsigned i = 0; i < points.size(); ++i)
     {
         int x1 = points[i].first;
         int y1 = points[i].second;
-        for (int j = i + 1; j < n; ++j)
+        for (unsigned j = i + 1; j < points.size(); ++j)
         {
             int x2 = points[j].first;
             int y2 = points[j].second;
@@ -622,14 +619,14 @@ int Graph::minCostToConnectAllPoints(const std::vector<std::pair<int, int>>& poi
 
     auto cmp = [](const std::pair<int, int> a, const std::pair<int, int> b) {
         return a.first > b.first;
-        };
+    };
     std::unordered_set<int> visited;
     std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, decltype(cmp)> minHeap(cmp);
     minHeap.push({ 0, 0 }); // always starts from first index node at cost 0.
 
     // Prim's algorithm (determine lowest cost edges to keep)
     int answer = 0;
-    while (visited.size() < n)
+    while (visited.size() < points.size())
     {
         int cost = minHeap.top().first;
         int i = minHeap.top().second;
@@ -684,7 +681,7 @@ int Graph::minNetworkDelayTime(const std::vector<std::vector<int>>& times, int n
                 minHeap.push({ weight + neighbor.first, neighbor.second }); // adding new weight to neighbor
     }
 
-    if (visited.size() == n)
+    if (n == static_cast<int>(visited.size()))
         return lastTime;
     else
         return -1;
@@ -700,7 +697,7 @@ int Graph::findCheapestFlightsWithinKStops(const std::vector<std::vector<int>>& 
     for (int i = 0; i < k + 1; ++i)
     {
         std::vector<int> tempPrices = prices;
-        for (int j = 0; j < flights.size(); ++j)
+        for (unsigned j = 0; j < flights.size(); ++j)
         {
             if (prices[flights[j][0]] == INT_MAX)
                 continue;

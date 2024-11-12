@@ -140,7 +140,7 @@ std::string DynamicProgramming::longestPalindrome(const std::string& s)
 
 int DynamicProgramming::expandPalindrome(const std::string& s, int left, int right)
 {
-    while (left >= 0 && right < s.size() && s[left] == s[right])
+    while (left >= 0 && right < static_cast<int>(s.size()) && s[left] == s[right])
     {
         --left;
         ++right;
@@ -160,7 +160,7 @@ int DynamicProgramming::countPalindromicSubstrings(const std::string& s)
     if (s.empty()) return 0;
 
     int palCount = 0;
-    for (int i = 0; i < s.size() - 1; ++i)
+    for (int i = 0; i < static_cast<int>(s.size()) - 1; ++i)
     {
         palCount += expandPalindromeCount(s, i, i);
         palCount += expandPalindromeCount(s, i, i + 1);
@@ -171,7 +171,7 @@ int DynamicProgramming::countPalindromicSubstrings(const std::string& s)
 int DynamicProgramming::expandPalindromeCount(const std::string& s, int left, int right)
 {
     int count = 0;
-    while (left >= 0 && right < s.size() && s[left] == s[right])
+    while (left >= 0 && right < static_cast<int>(s.size()) && s[left] == s[right])
     {
         --left;
         ++right;
@@ -204,7 +204,7 @@ int DynamicProgramming::numWaysToDecode(const std::string& s)
         else
             curr = next; // dp[i] = dp[i + 1]
 
-        if (i + 1 < s.size() && (s[i] == '1' ||
+        if (i + 1 < n && (s[i] == '1' ||
             (s[i] == '2' && s[i + 1] >= '0' && s[i + 1] <= '6')))
             curr += nextnext; // dp[i] += dp[i + 2]
 
@@ -230,7 +230,7 @@ int DynamicProgramming::coinChange(const std::vector<int>& coins, int amount)
 
     // only try a coin if it gets us closer to the solution
     for (int i = 1; i <= amount; ++i)
-        for (int j = 0; j < coins.size(); ++j)
+        for (unsigned j = 0; j < coins.size(); ++j)
             if (i - coins[j] >= 0)
                 dp[i] = std::min(dp[i], 1 + dp[i - coins[j]]);
 
@@ -289,9 +289,9 @@ bool DynamicProgramming::wordBreak(const std::string& s, const std::vector<std::
 
     foundDict[0] = true;
 
-    for (int i = 1; i < s.size() + 1; ++i)
+    for (unsigned i = 1; i < s.size() + 1; ++i)
     {
-        for (int j = 0; j < i; ++j)
+        for (unsigned j = 0; j < i; ++j)
         {
             if (foundDict[j] && wordSet.find(s.substr(j, i - j)) != wordSet.end())
             {
@@ -328,7 +328,7 @@ int DynamicProgramming::longestIncreasingSubsequence(const std::vector<int>& num
                 right = mid;
         }
 
-        if (left == tails.size())
+        if (left == static_cast<int>(tails.size()))
             tails.push_back(num);
         else
             tails[left] = num;
@@ -422,7 +422,7 @@ int DynamicProgramming::longestCommonSubsequence(const std::string& text1, const
 */
 int DynamicProgramming::buyAndSellStockWithCooldown(const std::vector<int>& prices)
 {
-    size_t n = prices.size();
+    int n = static_cast<int>(prices.size());
 
     if (n <= 1)
         return 0;
@@ -455,7 +455,7 @@ int DynamicProgramming::coinChangeNumCombinations(const std::vector<int>& coins,
     std::vector<int> dp(amount + 1, 0);
     dp[0] = 1;
 
-    for (int i = 0; i < coins.size(); ++i)
+    for (unsigned i = 0; i < coins.size(); ++i)
         for (int j = coins[i]; j <= amount; ++j)
             dp[j] += dp[j - coins[i]];
 
@@ -472,7 +472,7 @@ int DynamicProgramming::coinChangeNumCombinations(const std::vector<int>& coins,
 int DynamicProgramming::findTargetSumWays(const std::vector<int>& nums, int target)
 {
     int totalSum = 0;
-    for (int i = 0; i < nums.size(); ++i)
+    for (unsigned i = 0; i < nums.size(); ++i)
         totalSum += nums[i];
 
     if ((target + totalSum) % 2 != 0 || std::abs(target) > totalSum)
@@ -501,15 +501,15 @@ int DynamicProgramming::editDistance(const std::string& word1, const std::string
     size_t m = word1.size(), n = word2.size();
     std::vector<std::vector<int>> dp(m + 1, std::vector<int>(n + 1));
 
-    for (int i = 0; i < dp[0].size(); ++i)
+    for (unsigned i = 0; i < dp[0].size(); ++i)
         dp[0][i] = i;
 
-    for (int i = 0; i < dp.size(); ++i)
+    for (unsigned i = 0; i < dp.size(); ++i)
         dp[i][0] = i;
 
-    for (int i = 1; i < dp.size(); ++i)
+    for (unsigned i = 1; i < dp.size(); ++i)
     {
-        for (int j = 1; j < dp[0].size(); ++j)
+        for (unsigned j = 1; j < dp[0].size(); ++j)
         {
             // we don't need to add an edit to the word when its already equivalent
             if (word1[i - 1] == word2[j - 1])
@@ -546,9 +546,9 @@ bool DynamicProgramming::isInterleaved(const std::string& s1, const std::string&
     {
         for (int j = n; j >= 0; --j)
         {
-            if (i < s1.size() && s1[i] == s3[i + j] && dp[i + 1][j])
+            if (i < m && s1[i] == s3[i + j] && dp[i + 1][j])
                 dp[i][j] = true;
-            if (j < s2.size() && s2[j] == s3[i + j] && dp[i][j + 1])
+            if (j < n && s2[j] == s3[i + j] && dp[i][j + 1])
                 dp[i][j] = true;
         }
     }
@@ -615,7 +615,7 @@ int DynamicProgramming::longestIncreasingPath(const std::vector<std::vector<int>
 int DynamicProgramming::dfsLIP(const std::vector<std::vector<int>>& matrix, std::vector<std::vector<int>>& dp, int i, int j, int prevVal)
 {
     // make sure we don't go out of bounds, or to a visited cell.
-    if (i < 0 || i >= matrix.size() || j < 0 || j >= matrix[0].size() || matrix[i][j] <= prevVal)
+    if (i < 0 || i >= static_cast<int>(matrix.size()) || j < 0 || j >= static_cast<int>(matrix[0].size()) || matrix[i][j] <= prevVal)
         return 0;
     if (dp[i][j] != 0)
         return dp[i][j];

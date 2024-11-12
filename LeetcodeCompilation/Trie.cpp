@@ -53,7 +53,7 @@ bool Trie::searchWildcard(const std::string& word)
     return dfsWildcard(word, 0, root);
 }
 
-bool Trie::dfsWildcard(const std::string& word, int index, TrieNode* node)
+bool Trie::dfsWildcard(const std::string& word, unsigned index, TrieNode* node)
 {
     if (index == word.size()) return node->isWord;
 
@@ -76,10 +76,10 @@ void Trie::insertRef(std::string& word)
     TrieNode* curr = root;
     for (char c : word)
     {
-        c -= 'a';
-        if (!curr->children[c])
-            curr->children[c] = new TrieNode();
-        curr = curr->children[c];
+        int i = static_cast<int>(c - 'a');
+        if (!curr->children[i])
+            curr->children[i] = new TrieNode();
+        curr = curr->children[i];
     }
     curr->word = &word;
 }
@@ -104,7 +104,9 @@ std::vector<std::string> Trie::findWords(std::vector<std::vector<char>>& board, 
 
 void Trie::dfsWordSearch(std::vector<std::vector<char>>& board, int i, int j, TrieNode* cur, const int* DIR, std::vector<std::string>& ans)
 {
-    if (i < 0 || i == board.size() || j < 0 || j == board[0].size() || board[i][j] == '#' || !cur->children[board[i][j] - 'a'])
+    if (i < 0 || i == static_cast<int>(board.size()) || 
+        j < 0 || j == static_cast<int>(board[0].size()) || 
+        board[i][j] == '#' || !cur->children[board[i][j] - 'a'])
         return;
 
     char orgChar = board[i][j];

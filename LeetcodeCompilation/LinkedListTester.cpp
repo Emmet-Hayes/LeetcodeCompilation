@@ -413,19 +413,20 @@ bool LinkedListTester::testMergeKSortedLists(std::vector<ListNode*> lists, ListN
         printList(expectedcopy);
         ss << "]\n";
     }
-    bool result = true;
+
     while (actual && expected)
     {
         if (actual->val != expected->val)
-            result = false;
+            return false;
         actual = actual->next;
         expected = expected->next;
     }
 
     if (actual || expected)
-        result = false;
+        return false;
 
     LinkedList::destroyLinkedList(actual);
+    LinkedList::destroyLinkedList(expected);
 
     return true;
 }

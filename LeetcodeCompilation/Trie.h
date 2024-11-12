@@ -24,7 +24,7 @@ public:
     // Search Suggestions System
 
 private:
-    bool dfsWildcard(const std::string& word, int index, TrieNode* root);
+    bool dfsWildcard(const std::string& word, unsigned index, TrieNode* root);
     void dfsWordSearch(std::vector<std::vector<char>>& board, int i, int j, TrieNode* cur, const int* DIR, std::vector<std::string>& ans);
 
     std::unordered_set<std::string> wordset;
